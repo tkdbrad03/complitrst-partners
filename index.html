@@ -142,6 +142,72 @@ label {
     text-align: center;
   }
 }
+.crisis-section {
+  background: none; /* Removes red background for cleaner look */
+  padding: 30px 20px;
+  margin-bottom: 30px;
+}
+
+.crisis-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #ff6b6b;
+  margin-bottom: 20px;
+}
+
+.crisis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.crisis-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.crisis-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffc107;
+  margin-bottom: 5px;
+}
+
+.crisis-label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.crisis-description {
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.crisis-summary {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 480px) {
+  .crisis-title {
+    font-size: 1.5rem;
+  }
+  .crisis-value {
+    font-size: 1.5rem;
+  }
+  .crisis-summary {
+    font-size: 0.9rem;
+  }
+}
 
 
 
@@ -171,6 +237,39 @@ label {
     <p style="font-size: 20px; color: #ffc107;">
       Exclusive partnership program for experienced consultants ready to offer what manual processes simply cannot deliver.
     </p>
+  <div class="partner-form hidden" id="partnerForm">
+    <!-- Existing heading/subheading you've already added -->
+  <!-- Crisis Section Starts Here -->
+  <section class="crisis-section">
+    <h3 class="crisis-title"> The Florida ALF & Group Home Crisis</h3>
+    <div class="crisis-grid">
+      <div class="crisis-item">
+        <div class="crisis-value">73%</div>
+        <div class="crisis-label">ALF Audit Failures</div>
+        <div class="crisis-description">Nearly 3 out of 4 facilities fail compliance audits annually</div>
+      </div>
+      <div class="crisis-item">
+        <div class="crisis-value">$47K</div>
+        <div class="crisis-label">Average Violation Fine</div>
+        <div class="crisis-description">Per violation – some facilities face multiple violations</div>
+      </div>
+      <div class="crisis-item">
+        <div class="crisis-value">20+ hrs</div>
+        <div class="crisis-label">Hours Weekly</div>
+        <div class="crisis-description">Wasted on manual compliance paperwork per facility</div>
+      </div>
+      <div class="crisis-item">
+        <div class="crisis-value">$3.8B</div>
+        <div class="crisis-label">Market Opportunity</div>
+        <div class="crisis-description">Total compliance market size in Florida</div>
+      </div>
+    </div>
+    <p class="crisis-summary">
+      The Problem Every Florida Consultant Knows: <br />
+      Your clients are drowning in compliance chaos. Manual processes, audit failures, and regulatory nightmares are costing them millions. <strong>You know the pain, but fixing it manually doesn’t scale.</strong>
+    </p>
+  </section>
+  <!-- Crisis Section Ends -->
 
     <div class="calculator-section">
 
@@ -278,5 +377,6 @@ label {
   </script>
 </body>
 </html>
+
 
 
