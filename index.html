@@ -318,35 +318,47 @@ select.form-input option {
       </section>
 
       <div class="calculator-section">
-        <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
-        <div class="input-grid">
-          <div class="input-group">
-            <label class="input-label">ALFs in Your Network</label>
-            <input type="number" id="alf-count" class="input-field" value="15">
-            <div class="input-helper">Florida has 3,200+ ALFs</div>
-          </div>
-          <div class="input-group">
-            <label class="input-label">Group Homes in Your Network</label>
-            <input type="number" id="gh-count" class="input-field" value="25">
-            <div class="input-helper">Florida has 8,500+ Group Homes</div>
-          </div>
-        </div>
-        <div class="results-section">
-          <div class="revenue-number" id="total-revenue">$0</div>
-          <div class="revenue-breakdown">
-            <div class="breakdown-item"><div class="breakdown-number" id="alf-revenue">$0</div><div class="breakdown-label">ALF Commission</div></div>
-            <div class="breakdown-item"><div class="breakdown-number" id="gh-revenue">$0</div><div class="breakdown-label">Group Home Commission</div></div>
-            <div class="breakdown-item"><div class="breakdown-number" id="monthly-revenue">$0</div><div class="breakdown-label">Monthly Average</div></div>
-          </div>
-          <div class="timeline">
-            <div><strong>Month 3:</strong> <span id="month3">$0</span></div>
-            <div><strong>Month 6:</strong> <span id="month6">$0</span></div>
-            <div><strong>Month 12:</strong> <span id="month12">$0</span></div>
-            <div><strong>Month 18:</strong> <span id="month18">$0</span></div>
-          </div>
-        </div>
-      </div>
+  <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
 
+  <div class="input-grid">
+    <div class="input-group">
+      <label class="input-label">Enter ALFs in Your Network</label>
+      <input type="number" id="alf-count" class="input-field" placeholder="e.g. 15">
+      <div class="input-helper">Adjust to match your current ALF clients</div>
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Enter Group Homes in Your Network</label>
+      <input type="number" id="gh-count" class="input-field" placeholder="e.g. 25">
+      <div class="input-helper">Estimate how many group homes you could refer</div>
+    </div>
+  </div>
+
+  <div class="results-section">
+    <div class="revenue-number" id="total-revenue">$0</div>
+    <div class="revenue-breakdown">
+      <div class="breakdown-item">
+        <div class="breakdown-number" id="alf-revenue">$0</div>
+        <div class="breakdown-label">ALF Commission</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-number" id="gh-revenue">$0</div>
+        <div class="breakdown-label">Group Home Commission</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-number" id="monthly-revenue">$0</div>
+        <div class="breakdown-label">Monthly Average</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div><strong>Month 3:</strong> <span id="month3">$0</span></div>
+      <div><strong>Month 6:</strong> <span id="month6">$0</span></div>
+      <div><strong>Month 12:</strong> <span id="month12">$0</span></div>
+      <div><strong>Month 18:</strong> <span id="month18">$0</span></div>
+    </div>
+  </div>
+</div>
       <div class="cta-section">
         <div class="urgency-text">Partnership Applications Close In:</div>
         <div class="countdown">
