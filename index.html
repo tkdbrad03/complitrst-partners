@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CompliTrst Partner Opportunity</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: linear-gradient(135deg,#1a4d4d,#2a5f5f); color: white; margin:0; padding:0; }
+    .container { max-width:900px; margin:auto; padding:20px; }
+    .logo { display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:20px; }
+    .logo img { height:60px;}
+    .logo-text { font-size:2rem; font-weight:bold; color:white; }
+    .headline { font-size:2.5rem; background:linear-gradient(45deg,#FFD700,#FFA500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-align:center;}
+    .subheadline { font-size:1.2rem; margin-bottom:25px; text-align:center;}
+    .access-gate, .partner-form { background:rgba(220,20,60,0.85); padding:30px; border-radius:15px; text-align:center; margin:40px 0; }
+    .access-input { width:60%; padding:12px; border:none; border-radius:8px; font-size:1rem; margin-bottom:15px; }
+    .gate-button, .cta-button { background:linear-gradient(45deg,#FFD700,#FFA500); color:#1a4d4d; padding:14px 30px; border:none; border-radius:50px; font-size:1.2rem; font-weight:bold; cursor:pointer; transition:0.3s; }
+    .gate-button:hover, .cta-button:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .hidden { display:none; }
+    .calculator-section { background:rgba(255,255,255,0.1); padding:30px; border-radius:15px; margin-top:40px; }
+    .calculator-title { font-size:2rem; text-align:center; color:#FFD700; margin-bottom:25px; }
+    .input-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-bottom:30px; }
+    .input-group { background:rgba(0,0,0,0.3); padding:15px; border-radius:10px; }
+    .input-label { color:#FFD700; font-weight:bold; margin-bottom:8px; display:block; }
+    .input-field { width:100%; padding:12px; border:none; border-radius:8px; background:rgba(255,255,255,0.1); color:white; font-size:1rem; text-align:center; }
+    .input-helper { font-size:0.85rem; color:#ccc; margin-top:6px; text-align:center; }
+    .results-section { background:linear-gradient(135deg,#ffd700,#ffa500); color:#1a4d4d; padding:25px; border-radius:15px; text-align:center; margin-top:30px; }
+    .revenue-number { font-size:3rem; font-weight:bold; margin-bottom:15px; }
+    .revenue-breakdown { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-bottom:25px; }
+    .breakdown-item { background:rgba(26,77,77,0.3); padding:10px; border-radius:10px; }
+    .breakdown-number { font-size:1.3rem; font-weight:bold; margin-bottom:5px; }
+    .breakdown-label { font-size:0.9rem; opacity:0.8; }
+    .timeline { display:flex; justify-content:space-around; font-size:0.95rem; margin-top:20px; flex-wrap:wrap; gap:10px; }
+    .timeline div { background:rgba(255,255,255,0.15); padding:10px; border-radius:8px; }
+    .cta-section { background:rgba(220,20,60,0.8); padding:30px; border-radius:15px; text-align:center; margin-top:40px; }
+    .urgency-text { font-size:1.2rem; font-weight:bold; margin-bottom:15px; }
+    .countdown { display:flex; justify-content:center; gap:20px; margin-bottom:25px; flex-wrap:wrap; }
+    .countdown div { background:rgba(255,255,255,0.2); padding:10px 15px; border-radius:10px; width:80px; text-align:center; }
+    .countdown span { font-size:1.5rem; font-weight:bold; }
+    .form-group { margin-bottom:15px; text-align: center; }
+    .form-input { width:100%; max-width: 300px; margin:auto; padding:12px; border:none; border-radius:8px; background:rgba(255,255,255,0.1); color:white; font-size:1rem; }
+    .form-input::placeholder { color:white; }
+    .form-input:focus { outline:none; border:2px solid #FFD700; }
+    .select-container select {
+      background-color: #FFD700 !important;
+      color: #000 !important;
+      width:100%;
+      max-width:300px;
+      margin:auto;
+      padding:12px;
+      border-radius:8px;
+      font-size:1rem;
+    }
+    .select-container select option {
+      background-color: #fff;
+      color: #000 !important;
+    }
+    @media (max-width:480px) {
+      .access-input, .select-container select { width:90%; }
+      .input-grid { display:flex; flex-direction:column; gap:15px; }
+      .logo-text { font-size:1.5rem; }
+      h2, .calculator-title { font-size:1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/complitrst-logo-transparent.png" alt="CompliTrst Logo"/>
+      <div class="logo-text">COMPLITRST<sup>™</sup></div>
+    </div>
+    <h2 class="headline">Exclusive Partner Access</h2>
+    <p class="subheadline">Please enter your partnership access code to continue.</p>
+
+    <div class="access-gate" id="accessGate">
+      <input type="password" id="accessCode" class="access-input" placeholder="Enter Access Code"/></br>
+      <button class="gate-button" id="submitCode">Continue</button>
+      <p style="font-size:0.9rem; margin-top:10px;">For vetted partners only. Please keep this link confidential.</p>
+    </div>
+
+    <div class="partner-form hidden" id="partnerForm">
+      <div class="calculator-section">
+        <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
+        <div class="input-grid">
+          <div class="input-group">
+            <label class="input-label">ALFs in Your Network</label>
+            <input type="number" id="alf-count" class="input-field" value="15">
+            <div class="input-helper">Florida has 3,200+ ALFs</div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Group Homes in Your Network</label>
+            <input type="number" id="gh-count" class="input-field" value="25">
+            <div class="input-helper">Florida has 8,500+ Group Homes</div>
+          </div>
+        </div>
+        <div class="results-section">
+          <div class="revenue-number" id="total-revenue">$0</div>
+          <div class="revenue-breakdown">
+            <div class="breakdown-item"><div class="breakdown-number" id="alf-revenue">$0</div><div class="breakdown-label">ALF Commission</div></div>
+            <div class="breakdown-item"><div class="breakdown-number" id="gh-revenue">$0</div><div class="breakdown-label">Group Home Commission</div></div>
+            <div class="breakdown-item"><div class="breakdown-number" id="monthly-revenue">$0</div><div class="breakdown-label">Monthly Average</div></div>
+          </div>
+          <div class="timeline">
+            <div><strong>Month 3:</strong> <span id="month3">$0</span></div>
+            <div><strong>Month 6:</strong> <span id="month6">$0</span></div>
+            <div><strong>Month 12:</strong> <span id="month12">$0</span></div>
+            <div><strong>Month 18:</strong> <span id="month18">$0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <div class="urgency-text">Partnership Applications Close In:</div>
+        <div class="countdown">
+          <div><span id="cd-days">0</span>Days</div>
+          <div><span id="cd-hours">0</span>Hours</div>
+          <div><span id="cd-minutes">0</span>Mins</div>
+          <div><span id="cd-seconds">0</span>Secs</div>
+        </div>
+        <h2 class="headline">Ready to Claim Your Territory?</h2>
+        <form id="partner-application">
+          <div class="form-group"><input type="text" class="form-input" placeholder="Full Name" required></div>
+          <div class="form-group"><input type="email" class="form-input" placeholder="Email Address" required></div>
+          <div class="form-group"><input type="tel" class="form-input" placeholder="Phone Number" required></div>
+          <div class="form-group"><input type="text" class="form-input" placeholder="# of Current Clients" required></div>
+          <div class="form-group select-container">
+            <select class="form-input" required>
+              <option value="">Preferred Territory</option>
+              <option value="miami-dade">Miami-Dade County (302+ facilities)</option>
+              <option value="broward">Broward County (265+ facilities)</option>
+              <option value="orange">Orange County (280+ facilities)</option>
+              <option value="hillsborough">Hillsborough (220+ facilities)</option>
+              <option value="pinellas">Pinellas (195+ facilities)</option>
+              <option value="palm-beach">Palm Beach County (180+ facilities)</option>
+              <option value="duval">Duval (165+ facilities)</option>
+              <option value="lee">Lee County (125+ facilities)</option>
+              <option value="polk">Polk County (98+ facilities)</option>
+              <option value="alachua">Alachua County (65+ facilities)</option>
+            </select>
+          </div>
+          <button type="submit" class="cta-button">Apply for Partnership</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('submitCode').onclick = () => {
+      if (document.getElementById('accessCode').value.trim() === 'Partner2025') {
+        document.getElementById('accessGate').classList.add('hidden');
+        document.getElementById('partnerForm').classList.remove('hidden');
+      } else alert('Incorrect access code.');
+  </script>
+</body>
+</html>
