@@ -238,7 +238,14 @@ label {
       Exclusive partnership program for experienced consultants ready to offer what manual processes simply cannot deliver.
     </p>
   <div class="partner-form hidden" id="partnerForm">
-    <!-- Existing heading/subheading you've already added -->
+
+  <h2 style="color: #00ff66; font-size: 28px; margin-bottom: 10px;">
+    Finally, Bring Your ALF Clients the Compliance Solution They've Been Waiting For
+  </h2>
+  <p style="font-size: 20px; color: #ffc107;">
+    Exclusive partnership program for experienced consultants ready to offer what manual processes simply cannot deliver.
+  </p>
+
   <!-- Crisis Section Starts Here -->
   <section class="crisis-section">
     <h3 class="crisis-title"> The Florida ALF & Group Home Crisis</h3>
@@ -271,57 +278,81 @@ label {
   </section>
   <!-- Crisis Section Ends -->
 
-    <div class="calculator-section">
-
-        <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
-        <div class="input-grid">
-          <div class="input-group"><label class="input-label">ALFs in Your Network</label><input type="number" id="alf-count" class="input-field" value="15"><div class="input-helper">Florida has 3,200+ ALFs</div></div>
-          <div class="input-group"><label class="input-label">Group Homes in Your Network</label><input type="number" id="gh-count" class="input-field" value="25"><div class="input-helper">Florida has 8,500+ Group Homes</div></div>
+  <!-- Calculator Section -->
+  <div class="calculator-section">
+    <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
+    <div class="input-grid">
+      <div class="input-group">
+        <label class="input-label">ALFs in Your Network</label>
+        <input type="number" id="alf-count" class="input-field" value="15">
+        <div class="input-helper">Florida has 3,200+ ALFs</div>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Group Homes in Your Network</label>
+        <input type="number" id="gh-count" class="input-field" value="25">
+        <div class="input-helper">Florida has 8,500+ Group Homes</div>
+      </div>
+    </div>
+    <div class="results-section">
+      <div class="revenue-number" id="total-revenue">$0</div>
+      <div class="revenue-breakdown">
+        <div class="breakdown-item">
+          <div class="breakdown-number" id="alf-revenue">$0</div>
+          <div class="breakdown-label">ALF Commission</div>
         </div>
-        <div class="results-section">
-          <div class="revenue-number" id="total-revenue">$0</div>
-          <div class="revenue-breakdown">
-            <div class="breakdown-item"><div class="breakdown-number" id="alf-revenue">$0</div><div class="breakdown-label">ALF Commission</div></div>
-            <div class="breakdown-item"><div class="breakdown-number" id="gh-revenue">$0</div><div class="breakdown-label">Group Home Commission</div></div>
-            <div class="breakdown-item"><div class="breakdown-number" id="monthly-revenue">$0</div><div class="breakdown-label">Monthly Average</div></div>
-          </div>
-          <div class="timeline">
-            <div><strong>Month 3:</strong> <span id="month3">$0</span></div>
-            <div><strong>Month 6:</strong> <span id="month6">$0</span></div>
-            <div><strong>Month 12:</strong> <span id="month12">$0</span></div>
-            <div><strong>Month 18:</strong> <span id="month18">$0</span></div>
-          </div>
+        <div class="breakdown-item">
+          <div class="breakdown-number" id="gh-revenue">$0</div>
+          <div class="breakdown-label">Group Home Commission</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-number" id="monthly-revenue">$0</div>
+          <div class="breakdown-label">Monthly Average</div>
         </div>
       </div>
-
-      <div class="cta-section">
-        <div class="urgency-text">Partnership Applications Close In:</div>
-        <div class="countdown">
-          <div><span id="cd-days">0</span>Days</div>
-          <div><span id="cd-hours">0</span>Hours</div>
-          <div><span id="cd-minutes">0</span>Mins</div>
-          <div><span id="cd-seconds">0</span>Secs</div>
-        </div>
-        <h2 class="headline">Ready to Claim Your Territory?</h2>
-        <form id="partner-application">
-          <div class="form-group"><input type="text" class="form-input" placeholder="Full Name" required></div>
-          <div class="form-group"><input type="email" class="form-input" placeholder="Email Address" required></div>
-          <div class="form-group"><input type="tel" class="form-input" placeholder="Phone Number" required></div>
-          <div class="form-group"><input type="text" class="form-input" placeholder="# of Current Clients" required></div>
-          <div class="form-group"><select class="form-input" required><option value="">Preferred Territory</option><option value="miami-dade">Miami-Dade County (302+ facilities)</option><option value="broward">Broward County (265+ facilities)</option>
-  <option value="orange">Orange County (280+ facilities)</option>
-  <option value="hillsborough">Hillsborough (220+ facilities)</option>
-  <option value="pinellas">Pinellas (195+ facilities)</option>
-  <option value="palm-beach">Palm Beach County (180+ facilities)</option>
-  <option value="duval">Duval (165+ facilities)</option>
-  <option value="lee">Lee County (125+ facilities)</option>
-  <option value="polk">Polk County (98+ facilities)</option>
-  <option value="alachua">Alachua County (65+ facilities)</option></select></div>
-          <button type="submit" class="cta-button">Apply for Partnership</button>
-        </form>
+      <div class="timeline">
+        <div><strong>Month 3:</strong> <span id="month3">$0</span></div>
+        <div><strong>Month 6:</strong> <span id="month6">$0</span></div>
+        <div><strong>Month 12:</strong> <span id="month12">$0</span></div>
+        <div><strong>Month 18:</strong> <span id="month18">$0</span></div>
       </div>
     </div>
   </div>
+
+  <!-- Application Form -->
+  <div class="cta-section">
+    <div class="urgency-text">Partnership Applications Close In:</div>
+    <div class="countdown">
+      <div><span id="cd-days">0</span>Days</div>
+      <div><span id="cd-hours">0</span>Hours</div>
+      <div><span id="cd-minutes">0</span>Mins</div>
+      <div><span id="cd-seconds">0</span>Secs</div>
+    </div>
+    <h2 class="headline">Ready to Claim Your Territory?</h2>
+    <form id="partner-application">
+      <div class="form-group"><input type="text" class="form-input" placeholder="Full Name" required></div>
+      <div class="form-group"><input type="email" class="form-input" placeholder="Email Address" required></div>
+      <div class="form-group"><input type="tel" class="form-input" placeholder="Phone Number" required></div>
+      <div class="form-group"><input type="text" class="form-input" placeholder="# of Current Clients" required></div>
+      <div class="form-group">
+        <select class="form-input" required>
+          <option value="">Preferred Territory</option>
+          <option value="miami-dade">Miami-Dade County (302+ facilities)</option>
+          <option value="broward">Broward County (265+ facilities)</option>
+          <option value="orange">Orange County (280+ facilities)</option>
+          <option value="hillsborough">Hillsborough (220+ facilities)</option>
+          <option value="pinellas">Pinellas (195+ facilities)</option>
+          <option value="palm-beach">Palm Beach County (180+ facilities)</option>
+          <option value="duval">Duval (165+ facilities)</option>
+          <option value="lee">Lee County (125+ facilities)</option>
+          <option value="polk">Polk County (98+ facilities)</option>
+          <option value="alachua">Alachua County (65+ facilities)</option>
+        </select>
+      </div>
+      <button type="submit" class="cta-button">Apply for Partnership</button>
+    </form>
+  </div>
+
+</div>
 
   <script>
     document.getElementById('submitCode').onclick = () => {
@@ -377,6 +408,7 @@ label {
   </script>
 </body>
 </html>
+
 
 
 
