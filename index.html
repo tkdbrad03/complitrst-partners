@@ -249,14 +249,21 @@
       .crisis-summary { font-size: 0.9rem; }
     }
     select.form-input {
-  background-color: white;   /* Keeps dropdown background visible */
-  color: black;              /* Makes selected text black */
+  background-color: rgba(255, 255, 255, 0.1); /* translucent like others */
+  color: white;                              /* white text on dropdown */
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+  appearance: none; /* removes default styling in some browsers */
 }
 
-/* Dropdown options */
+/* Ensure options are readable when dropdown is open */
 select.form-input option {
-  background-color: white;   /* White background for each option */
-  color: black;              /* Black font for visibility */
+  background-color: #ffffff;
+  color: black;
 }
 
   </style>
