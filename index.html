@@ -27,7 +27,7 @@
     .logo img { height: 60px; }
     .logo-text { font-size: 2rem; font-weight: bold; color: #d4af37; }
     .headline {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 800;
       background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #42968e 100%);
       -webkit-background-clip: text;
@@ -45,18 +45,25 @@
       text-align: center;
     }
 
-    /* Input & Button Styles */
-    .access-input, .form-input {
-      width: 100%;
-      max-width: 300px;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
+   /* Input & Button Styles */
+.access-input, .form-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white !important; /* Makes user-entered text white */
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+/* Ensure placeholder text is also white */
+.access-input::placeholder,
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
 
     .gate-button, .cta-button {
       background: linear-gradient(45deg, #42968e, #d4af37);
@@ -153,7 +160,7 @@
     }
 
     .results-section {
-      background: rgba(212, 175, 55, 0.2);
+      background: white;
       color: #1a3a39;
       padding: 25px;
       border-radius: 15px;
@@ -339,15 +346,23 @@
           <div class="form-group">
             <select class="form-input" required>
               <option value="">Preferred Territory</option>
-              <option value="miami-dade">Miami-Dade County</option>
-              <!-- add others -->
-            </select>
-          </div>
-          <button type="submit" class="cta-button">Apply for Partnership</button>
-        </form>
+              <option value="miami-dade">Miami-Dade County (302+ facilities)</option>
+          <option value="broward">Broward County (265+ facilities)</option>
+          <option value="orange">Orange County (280+ facilities)</option>
+          <option value="hillsborough">Hillsborough (220+ facilities)</option>
+          <option value="pinellas">Pinellas (195+ facilities)</option>
+          <option value="palm-beach">Palm Beach County (180+ facilities)</option>
+          <option value="duval">Duval (165+ facilities)</option>
+          <option value="lee">Lee County (125+ facilities)</option>
+          <option value="polk">Polk County (98+ facilities)</option>
+          <option value="alachua">Alachua County (65+ facilities)</option>
+        </select>
       </div>
-    </div>
+      <button type="submit" class="cta-button">Apply for Partnership</button>
+    </form>
   </div>
+
+</div>
 
   <script>
     document.getElementById('submitCode').onclick = () => {
@@ -391,3 +406,4 @@
   </script>
 </body>
 </html>
+
