@@ -154,7 +154,7 @@ label {
       <div class="logo-text">COMPLITRST<sup>™</sup></div>
     </div>
     <h2 class="headline">Exclusive Partner Access</h2>
-    <p class="subheadline">Please enter your partnership access code to continue.</p>
+    <p class="subheadline" id="accessPrompt">Please enter your partnership access code to continue.</p>
 
     <div class="access-gate" id="accessGate">
       <input type="password" id="accessCode" class="access-input" placeholder="Enter Access Code"/>
@@ -229,6 +229,7 @@ label {
       if (document.getElementById('accessCode').value.trim() === 'Partner2025') {
         document.getElementById('accessGate').classList.add('hidden');
         document.getElementById('partnerForm').classList.remove('hidden');
+        document.getElementById('accessPrompt').classList.add('hidden'); // 👈 This hides the prompt
       } else alert('Incorrect access code.');
     };
 
@@ -277,4 +278,5 @@ label {
   </script>
 </body>
 </html>
+
 
