@@ -966,7 +966,34 @@ ul.bullets li {
         </select>
           <button type="submit">Apply for Partnership</button>
         </form>
+       <!-- Success Message -->
+ <div id="form-success" style="display:none; margin-top: 20px; padding: 15px; background: #d4af37; color: #1a4a47; border-radius: 8px; text-align: center; font-weight: bold;">
+  ✅ Thank you! Your submission has been received. We'll be in touch soon.
 </div>
+<script>
+  const form = document.getElementById('partner-form');
+  const successMessage = document.getElementById('form-success');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      successMessage.style.display = 'block';
+    } else {
+      alert('Oops! Something went wrong. Please try again.');
+    }
+  });
+</script>
 
   <script>
     document.getElementById('submitCode').onclick = () => {
@@ -1016,6 +1043,7 @@ ul.bullets li {
     
 
   
+
 
 
 
