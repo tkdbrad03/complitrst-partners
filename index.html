@@ -358,6 +358,126 @@ select.form-input option {
 .surgeon-analogy em {
   color: #4ecdc4;
 }
+.replace-me-section {
+  background: linear-gradient(145deg, rgba(255,165,0,0.1), rgba(255,165,0,0.05));
+  border: 2px solid rgba(255,165,0,0.4);
+  border-radius: 20px;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+.replace-me-section h2 {
+  color: #FFA500;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.replace-subtext {
+  color: #FFA500;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.replace-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.replace-block {
+  flex: 1 1 280px;
+  border-radius: 15px;
+  padding: 25px;
+  font-size: 1rem;
+}
+.replace-block h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.replace-block ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.8;
+}
+.danger {
+  background: rgba(220,20,60,0.1);
+  border: 2px solid #dc143c;
+}
+.danger h3 {
+  color: #ff6b6b;
+}
+
+.success {
+  background: rgba(50,205,50,0.1);
+  border: 2px solid #32cd32;
+}
+.success h3 {
+  color: #32cd32;
+}
+
+.what-really-happens {
+  background: rgba(255,215,0,0.2);
+  padding: 25px;
+  border-radius: 15px;
+}
+.what-really-happens h3 {
+  text-align: center;
+  color: #1a4d4d;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.impact-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+.impact-list li {
+  background: rgba(26,77,77,0.3);
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+}
+.impact-list strong {
+  display: block;
+  color: #FFD700;
+  margin-bottom: 5px;
+}
+
+.surgeon-analogy {
+  background: rgba(26,77,77,0.4);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 25px;
+  text-align: center;
+}
+.surgeon-analogy h4 {
+  color: #32cd32;
+  margin-bottom: 10px;
+}
+.surgeon-analogy strong {
+  color: #FFD700;
+}
+.surgeon-analogy em {
+  color: #4ecdc4;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  .replace-block ul {
+    font-size: 0.95rem;
+  }
+  .impact-list li {
+    font-size: 0.95rem;
+  }
+  .replace-me-section h2 {
+    font-size: 1.6rem;
+  }
+}
 
   </style>
 </head>
@@ -447,10 +567,12 @@ select.form-input option {
             </div>
         </div>
 
-  <!-- === "Will This Replace Me?" Section === -->
+ <!-- === "Will This Replace Me?" Section === -->
 <section class="replace-me-section">
   <h2>“Will This Replace Me?”</h2>
-  <p class="replace-subtext"><strong>The short answer: No. The real answer: It makes you irreplaceable.</strong></p>
+  <p class="replace-subtext">
+    <strong>The short answer: No. The real answer: It makes you irreplaceable.</strong>
+  </p>
 
   <div class="replace-columns">
     <div class="replace-block danger">
@@ -479,12 +601,13 @@ select.form-input option {
 
   <div class="what-really-happens">
     <h3>Here’s What Really Happens:</h3>
-    <div class="impact-grid">
-      <div><h4>Your Relationships Matter More</h4><p>CompliTrst needs <em>your</em> trusted relationships to get in the door. Facilities buy from people they trust, not software companies.</p></div>
-      <div><h4>Your Expertise Becomes More Valuable</h4><p>Instead of doing data entry, you're interpreting insights, strategizing improvements, and guiding compliance strategy.</p></div>
-      <div><h4>You Become the Ringmaster</h4><p>You orchestrate the entire compliance transformation. CompliTrst is your powerful tool, but <em>you're</em> the expert wielding it.</p></div>
-      <div><h4>You Scale Your Impact</h4><p>Help 50 facilities instead of 5. Your expertise reaches more clients without burning you out on manual tasks.</p></div>
-    </div>
+    <ul class="impact-list">
+      <li><strong>Your Relationships Matter More:</strong> CompliTrst needs <em>your</em> trusted relationships to get in the door. Facilities buy from people they trust, not software companies.</li>
+      <li><strong>Your Expertise Becomes More Valuable:</strong> Instead of doing data entry, you're interpreting insights, strategizing improvements, and guiding compliance strategy.</li>
+      <li><strong>You Become the Ringmaster:</strong> You orchestrate the entire compliance transformation. CompliTrst is your powerful tool, but <em>you're</em> the expert wielding it.</li>
+      <li><strong>You Scale Your Impact:</strong> Help 50 facilities instead of 5. Your expertise reaches more clients without burning you out on manual tasks.</li>
+    </ul>
+
     <div class="surgeon-analogy">
       <h4>Think of it this way:</h4>
       <p><strong>A surgeon doesn't become less valuable when they get better surgical tools.</strong><br>
@@ -493,6 +616,7 @@ select.form-input option {
     </div>
   </div>
 </section>
+
 
       <div class="calculator-section">
   <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
@@ -613,6 +737,7 @@ select.form-input option {
   </script>
 </body>
 </html>
+
 
 
 
