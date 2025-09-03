@@ -572,6 +572,38 @@ select.form-input option {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+    ul.bullets {
+  list-style: disc inside;
+  padding-left: 0;
+  margin-left: 0;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+ul.bullets li {
+  margin-bottom: 10px;
+}
+.centered-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.centered-section h3 {
+  color: #FFD700;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.centered-section p {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+
 
 
   </style>
@@ -715,24 +747,25 @@ select.form-input option {
 <section class="opportunity-section">
   <div class="two-column">
     <div>
-      <h3>WHO We’re Looking For:</h3>
-      <ul>
-        <li>3+ years ALF/group home consulting experience</li>
-        <li>Existing relationships with 10+ Florida facilities</li>
-        <li>Track record of successful compliance projects</li>
-        <li>Understanding of healthcare regulations</li>
-        <li>Commitment to 5+ demos in first 90 days</li>
-      </ul>
-    </div>
-    <div>
-      <h3>WHAT You Get:</h3>
-      <ul>
-        <li>30% revenue share on every deal</li>
-        <li>Exclusive Florida territory protection</li>
-        <li>Complete technical implementation support</li>
-        <li>Sales enablement tools and training</li>
-        <li>Direct access to our technical team</li>
-      </ul>
+      <!-- WHO We're Looking For -->
+<h3>WHO We’re Looking For:</h3>
+<ul class="bullets">
+  <li>3+ years ALF/group home consulting experience</li>
+  <li>Existing relationships with 10+ Florida facilities</li>
+  <li>Track record of successful compliance projects</li>
+  <li>Understanding of healthcare regulations</li>
+  <li>Commitment to 5+ demos in first 90 days</li>
+</ul>
+
+<!-- WHAT You Get -->
+<h3>WHAT You Get:</h3>
+<ul class="bullets">
+  <li>30% revenue share on every deal</li>
+  <li>Exclusive Florida territory protection</li>
+  <li>Complete technical implementation support</li>
+  <li>Sales enablement tools and training</li>
+  <li>Direct access to our technical team</li>
+</ul>
     </div>
   </div>
 </section>
@@ -741,24 +774,30 @@ select.form-input option {
 <section class="opportunity-section">
   <h2>Why This Makes Your Job Easier</h2>
   
-  <div class="two-column">
-    <div>
-      <h3>Easy to Demo</h3>
-      <p>Show real-time compliance dashboards that wow prospects in 15 minutes.</p>
-    </div>
-    <div>
-      <h3>No Technical Hassle</h3>
-      <p>We handle 100% of implementation — you focus on relationships.</p>
-    </div>
-    <div>
-      <h3>Recurring Revenue</h3>
-      <p>Monthly subscriptions = predictable income vs one-time project fees.</p>
-    </div>
-    <div>
-      <h3>Become the Hero</h3>
-      <p>You're the consultant who brought them the future of compliance.</p>
-    </div>
+  <section class="benefits-section">
+
+  <div class="centered-section">
+    <h3>Easy to Demo</h3>
+    <p>Show real-time compliance dashboards that wow prospects in 15 minutes.</p>
   </div>
+
+  <div class="centered-section">
+    <h3>No Technical Hassle</h3>
+    <p>We handle 100% of implementation — you focus on relationships.</p>
+  </div>
+
+  <div class="centered-section">
+    <h3>Recurring Revenue</h3>
+    <p>Monthly subscriptions = predictable income vs one-time project fees.</p>
+  </div>
+
+  <div class="centered-section">
+    <h3>Become the Hero</h3>
+    <p>You're the consultant who brought them the future of compliance.</p>
+  </div>
+
+</section>
+
 
   <div class="opportunity-subgrid">
     <h3>What This Means for Your Practice:</h3>
@@ -903,6 +942,7 @@ select.form-input option {
   </script>
 </body>
 </html>
+
 
 
 
