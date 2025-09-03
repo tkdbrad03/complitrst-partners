@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CompliTrst Partners</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; color:#003D2F; }
+    h1, h2, h3, h4 { margin-top: 0; }
+    .hero {
+      background: linear-gradient(135deg, #003D2F, #0B5345);
+      color:#F9BF3B; padding: 80px 20px; text-align: center;
+    }
+    .hero h1 { font-size: 36px; margin-bottom: 10px; }
+    .cta-btn {
+      background: #F9BF3B; color:#003D2F; padding:12px 24px;
+      border:none; border-radius:4px; font-size:16px; cursor:pointer;
+      text-decoration:none; display:inline-block;
+    }
+    section { padding: 60px 20px; }
+    .dark { background: #003D2F; color:#ffffff; }
+    .light { background: #ffffff; color:#003D2F; }
+    .hidden { display: none; }
+    .apply-form input, .apply-form textarea, .apply-form button {
+      width: 100%; padding: 10px; margin-bottom: 10px;
+      border-radius: 4px; border: 1px solid #ccc; font-size: 16px;
+    }
+    .apply-form button { background:#F9BF3B; color:#003D2F; cursor:pointer; }
+    .urgency-text { font-weight: bold; font-size: 18px; text-align: center; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Start Your Own Compliance Business with CompliTrst™</h1>
+    <p>Turn your nursing expertise into a profitable compliance service — powered by our platform.</p>
+    <a href="#apply" class="cta-btn">Apply to Be a Founding Partner</a>
+    <p class="urgency-text">Time remaining: <span id="cd-days"></span>d <span id="cd-hours"></span>h <span id="cd-minutes"></span>m <span id="cd-seconds"></span>s</p>
+  </header>
+
+  <section id="accessGate" class="light">
+    <h2 style="text-align:center;">Enter Access Code</h2>
+    <div class="apply-form" style="max-width:400px;margin:0 auto;">
+      <input type="text" id="accessCode" placeholder="Enter access code" />
+      <button id="submitCode">Enter</button>
+    </div>
+    <p id="accessPrompt" style="text-align:center;">Access is restricted to invited applicants only.</p>
+  </section>
+
+  <section id="partnerForm" class="light hidden">
+    <h2 style="text-align:center;">Apply Now</h2>
+    <form id="partner-form" class="apply-form" style="max-width:500px;margin:0 auto;">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="text" name="phone" placeholder="Phone Number" />
+      <textarea name="background" placeholder="Tell us about your nursing/CNA/compliance background"></textarea>
+      <label for="alf-count"># of ALFs:</label>
+      <input type="number" id="alf-count" />
+      <label for="gh-count"># of Group Homes:</label>
+      <input type="number" id="gh-count" />
+      <button type="submit">Submit Application</button>
+    </form>
+    <div id="form-success" style="display:none;text-align:center;">✅ Application submitted successfully.</div>
+    <div style="max-width:500px;margin:20px auto;text-align:center;">
+      <p>Estimated Monthly Revenue: <span id="monthly-revenue"></span></p>
+      <p>Total Potential: <span id="total-revenue"></span></p>
+    </div>
+  </section>
+
+  <script>
+    // Password logic
+    document.getElementById('submitCode').onclick = () => {
+      if (document.getElementById('accessCode').value.trim() === 'Partner2025') {
+        document.getElementById('accessGate').classList.add('hidden');
+        document.getElementById('partnerForm').classList.remove('hidden');
+        document.getElementById('accessPrompt').classList.add('hidden');
+      } else {
+        alert('Incorrect access code.');
+      }
+    };
+
+    // Countdown Timer
+    const targetDate = new Date(); targetDate.setDate(targetDate.getDate() + 15);
+    setInterval(() => {
+      const now = Date.now(), dist = targetDate - now;
+      if (dist < 0) return document.querySelector('.urgency-text').textContent = 'Applications Closed';
+      document.getElementById('cd-days').textContent = Math.floor(dist / 86400000);
+      document.getElementById('cd-hours').textContent = Math.floor((dist % 86400000) / 3600000);
+      document.getElementById('cd-minutes').textContent = Math.floor((dist % 3600000) / 60000);
+      document.getElementById('cd-seconds').textContent = Math.floor((dist % 60000) / 1000);
+    }, 1000);
+
+    // ROI Calculator
+    const calcROI = () => {
+      const alf = +document.getElementById('alf-count').value || 0;
+      const gh = +document.getElementById('gh-count').value || 0;
+      const annual = 444 * 12 + 322;
+      const commission = (alf + gh) * annual * 0.3;
+      const monthly = commission / 12;
+      document.getElementById('total-revenue').textContent = `$${Math.round(commission).toLocaleString()}`;
+      document.getElementById('monthly-revenue').textContent = `$${Math.round(monthly).toLocaleString()}`;
+    };
+    document.querySelectorAll('#alf-count, #gh-count').forEach(el => el.addEventListener('input', calcROI));
+    calcROI();
+
+    // Formspree submission
+    const form = document.getElementById('partner-form');
+    const successMessage = document.getElementById('form-success');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch('https://formspree.io/f/mzzajvke', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
