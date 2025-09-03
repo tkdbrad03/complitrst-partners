@@ -6,196 +6,267 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CompliTrst Partner Access</title>
   <style>
-  /* === Global & Base Styles === */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  background: linear-gradient(135deg, #1a4a47 0%, #2d5a57 50%, #1e3a39 100%);
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-.container {
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px 0;
-  text-align: center;
-}
+    /* Global Styles */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #1a4a47 0%, #2d5a57 50%, #1e3a39 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+      margin: 0; padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
 
-/* === Logo & Main Headline === */
-.logo { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-.logo img { height: 60px; max-width: 100%; }
-.logo-text { font-size: 2rem; font-weight: bold; color: #d4af37; }
-.headline {
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #42968e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 20px 0;
-}
-.subheadline {
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  color: #b0b0b0;
-  margin-bottom: 20px;
-}
+    /* Logo & Header */
+    .logo { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .logo img { height: 60px; }
+    .logo-text { font-size: 2rem; font-weight: bold; color: #d4af37; }
+    .headline {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #42968e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
 
-/* === Containers & Cards === */
-.access-gate, .partner-form,
-.crisis-section, .calculator-section, .cta-section,
-.feature-card, .testimonial, .social-proof {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  border-radius: 15px;
-  padding: 30px;
-  margin: 40px 0;
-  text-align: center;
-}
+    /* Clean containers */
+    .access-gate, .partner-form {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 40px 0;
+      text-align: center;
+    }
 
-/* === Form Inputs & Buttons === */
+   /* Input & Button Styles */
 .access-input, .form-input {
-  width: 100%; max-width: 300px;
+  width: 100%;
+  max-width: 300px;
   padding: 12px;
-  border: none; border-radius: 8px;
+  border: none;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.1);
-  color: white; font-size: 1rem;
+  color: white !important; /* Makes user-entered text white */
+  font-size: 1rem;
   margin-bottom: 15px;
 }
+
+/* Ensure placeholder text is also white */
 .access-input::placeholder,
-.form-input::placeholder { color: rgba(255,255,255,0.8); }
-.gate-button, .cta-button {
-  background: linear-gradient(45deg, #42968e, #d4af37);
-  padding: 1rem 2.5rem; border-radius: 50px;
-  font-size: 1.2rem; font-weight: 700;
-  color: #fff; border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(66,150,142,0.4);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.gate-button:hover, .cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(66,150,142,0.6);
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* === Crisis Section === */
-.crisis-title { font-size: 1.8rem; margin-bottom: 20px; color: #ff6b6b; }
-.crisis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.crisis-item {
-  background: rgba(255,255,255,0.1);
-  padding: 20px; border-radius: 10px;
-}
-.crisis-value { font-size: 2rem; font-weight: bold; color: #ffc107; }
-.crisis-label { font-size: 1rem; margin: 5px 0; }
-.crisis-description { font-size: 0.85rem; color: #ddd; }
-.crisis-summary {
-  font-size: 1rem; color: #d0d0d0;
-  max-width: 600px; margin: 20px auto 0;
-}
 
-/* === Calculator & Revenue === */
-.calculator-title { font-size: 2rem; color: #d4af37; margin-bottom: 25px; }
-.input-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px; margin-bottom: 30px;
-}
-.input-label { color: #d4af37; font-weight: bold; margin-bottom: 8px; display: block; }
-.input-helper { font-size: 0.85rem; color: #ccc; margin-top: 6px; text-align: center; }
-.results-section {
-  background: white; color: #1a3a39;
-  padding: 25px; border-radius: 15px;
-  text-align: center; margin-top: 30px;
-}
-.revenue-number { font-size: 3rem; font-weight: bold; margin-bottom: 15px; }
-.revenue-breakdown {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px; margin-bottom: 25px;
-}
-.breakdown-item {
-  background: rgba(26,77,77,0.3);
-  padding: 10px; border-radius: 10px;
-}
-.breakdown-number { font-size: 1.3rem; font-weight: bold; }
-.breakdown-label { font-size: 0.9rem; opacity: 0.8; }
-.timeline {
-  display: flex; justify-content: space-around;
-  flex-wrap: wrap; gap: 10px;
-  font-size: 0.95rem; margin-top: 20px;
-}
-.timeline div {
-  background: rgba(255,255,255,0.15);
-  padding: 10px 15px;
-  border-radius: 8px;
-}
+    .gate-button, .cta-button {
+      background: linear-gradient(45deg, #42968e, #d4af37);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(66, 150, 142, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
+    }
+    .gate-button:hover, .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(66, 150, 142, 0.6);
+    }
 
-/* === Partnership & Other Info Sections === */
-.two-column, .grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 30px;
-}
-.partner-opportunity, .when-where, .feature-section {
-  background: rgba(255,255,255,0.05);
-  padding: 30px; border-radius: 15px;
-  margin-bottom: 40px;
-}
-.partner-opportunity h2,
-.when-where h3 { color: #ffd700; margin-bottom: 20px; }
+    .hidden { display: none; }
 
-/* === Social Proof === */
-.social-proof .testimonial {
-  background: rgba(255,255,255,0.08);
-  border-left: 4px solid #42968e;
-  padding: 2rem; border-radius: 10px;
-  font-style: italic; margin-bottom: 1rem;
-}
-.social-proof .testimonial-author {
-  font-weight: 600; color: #42968e;
-  margin-top: 1rem; font-style: normal;
-}
+    /* Crisis section */
+    .crisis-section {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 30px 20px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+    }
+    .crisis-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ff6b6b;
+    }
+    .crisis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .crisis-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .crisis-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffc107;
+    }
+    .crisis-label { font-size: 1rem; margin: 5px 0; }
+    .crisis-description { font-size: 0.85rem; color: #ddd; }
+    .crisis-summary {
+      font-size: 1rem;
+      color: #d0d0d0;
+      max-width: 600px;
+      margin: 20px auto 0 auto;
+    }
 
-/* === Dropdown Specifics === */
-select.form-input {
-  background-color: rgba(255,255,255,0.1);
-  color: white;
+    /* Calculator and Results */
+    .calculator-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      margin-top: 40px;
+    }
+    .calculator-title {
+      font-size: 2rem;
+      color: #d4af37;
+      margin-bottom: 25px;
+    }
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .input-group {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .input-label {
+      color: #d4af37;
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .input-helper {
+      font-size: 0.85rem;
+      color: #ccc;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .results-section {
+      background: white;
+      color: #1a3a39;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .revenue-number {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .revenue-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .breakdown-item {
+      background: rgba(26, 77, 77, 0.3);
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .breakdown-number {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .breakdown-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.95rem;
+      margin-top: 20px;
+    }
+    .timeline div {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    /* Application CTA */
+    .cta-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      margin-top: 40px;
+    }
+    .urgency-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+    .countdown div {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 15px;
+      border-radius: 10px;
+      width: 80px;
+      text-align: center;
+    }
+    .countdown span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1a3a39;
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 15px; }
+    .form-input:focus { outline: none; border: 2px solid #d4af37; }
+
+    @media (max-width: 480px) {
+      .input-grid { display: flex; flex-direction: column; gap: 15px; }
+      .crisis-title { font-size: 1.5rem; }
+      .crisis-value { font-size: 1.5rem; }
+      .crisis-summary { font-size: 0.9rem; }
+    }
+    select.form-input {
+  background-color: rgba(255, 255, 255, 0.1); /* translucent like others */
+  color: white;                              /* white text on dropdown */
   border: none;
   border-radius: 8px;
   padding: 12px;
   font-size: 1rem;
   width: 100%;
   max-width: 300px;
+  appearance: none; /* removes default styling in some browsers */
 }
+
+/* Ensure options are readable when dropdown is open */
 select.form-input option {
-  background-color: white;
+  background-color: #ffffff;
   color: black;
 }
 
-/* === Responsive Breakpoints === */
-@media (max-width: 768px) {
-  .headline { font-size: clamp(1.8rem, 7vw, 3.5rem); }
-}
-@media (max-width: 480px) {
-  .input-grid, .two-column, .grid-2 {
-    display: block;
-  }
-  .two-column > div, .grid-2 > div {
-    margin-bottom: 20px;
-  }
-  .crisis-title { font-size: 1.5rem; }
-  .crisis-value { font-size: 1.5rem; }
-  .crisis-summary { font-size: 0.9rem; }
-  .access-gate, .partner-form, .cta-section { padding: 20px; margin: 20px 0; }
-}
- </style>
+  </style>
 </head>
 <body>
   <div class="container">
@@ -212,8 +283,8 @@ select.form-input option {
       <p style="font-size:0.9rem; color:#d0d0d0;">For vetted partners only. Please keep this link confidential.</p>
     </div>
 
-    <div id="partnerForm" class="hidden">
-      <h2 class="headline">Finally, Bring Your ALF & Group Home Clients the Compliance Solution They've Been Waiting For</h2>
+    <div class="partner-form hidden" id="partnerForm">
+      <h2 class="headline">Finally, Bring Your ALF Clients the Compliance Solution They've Been Waiting For</h2>
       <p class="subheadline">Exclusive partnership program for experienced consultants ready to offer what manual processes simply cannot deliver.</p>
 
       <section class="crisis-section">
@@ -221,7 +292,7 @@ select.form-input option {
         <div class="crisis-grid">
           <div class="crisis-item">
             <div class="crisis-value">73%</div>
-            <div class="crisis-label">Audit Failures</div>
+            <div class="crisis-label">ALF Audit Failures</div>
             <div class="crisis-description">Nearly 3 out of 4 facilities fail compliance audits annually.</div>
           </div>
           <div class="crisis-item">
@@ -247,7 +318,7 @@ select.form-input option {
       </section>
   <!-- Solution Section -->
         <div style="background: linear-gradient(145deg, rgba(50,205,50,0.1), rgba(50,205,50,0.05)); border: 2px solid rgba(50,205,50,0.3); border-radius: 20px; padding: 40px; margin-bottom: 40px;">
-            <h2 style="color: #32cd32; text-align: center; margin-bottom: 30px; font-size: 2rem;">Finally, A Solution That Actually Works</h2>
+            <h2 style="color: #32cd32; text-align: center; margin-bottom: 30px; font-size: 2rem;">✅ Finally, A Solution That Actually Works</h2>
             
             <div style="text-align: center; margin-bottom: 30px;">
                 <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 20px;">
@@ -282,196 +353,6 @@ select.form-input option {
                 </div>
             </div>
         </div>
-      <!-- Addressing the "Will This Replace Me?" Concern -->
-        <div style="background: linear-gradient(145deg, rgba(255,165,0,0.1), rgba(255,165,0,0.05)); border: 2px solid rgba(255,165,0,0.4); border-radius: 20px; padding: 40px; margin-bottom: 40px;">
-            <h2 style="color: #FFA500; text-align: center; margin-bottom: 30px; font-size: 2rem;">"Will This Replace Me?"</h2>
-            
-            <div style="text-align: center; margin-bottom: 30px;">
-                <p style="font-size: 1.3rem; line-height: 1.6; color: #FFA500;">
-                    <strong>The short answer: No. The real answer: It makes you irreplaceable.</strong>
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                <div style="background: rgba(220,20,60,0.1); border: 2px solid #dc143c; border-radius: 15px; padding: 25px;">
-                    <h3 style="color: #ff6b6b; text-align: center; margin-bottom: 20px;">❌ Without CompliTrst</h3>
-                    <ul style="line-height: 1.8; list-style: none; padding-left: 0;">
-                        <li style="margin-bottom: 10px;">◾<strong>You're a paperwork processor</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Stuck doing manual, repetitive tasks</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Always reactive to compliance crises</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Limited by your personal time</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Same problems, same solutions</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Competing on price, not value</strong></li>
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(50,205,50,0.1); border: 2px solid #32cd32; border-radius: 15px; padding: 25px;">
-                    <h3 style="color: #32cd32; text-align: center; margin-bottom: 20px;">✅ With CompliTrst</h3>
-                    <ul style="line-height: 1.8; list-style: none; padding-left: 0;">
-                        <li style="margin-bottom: 10px;">◾<strong>You're a strategic advisor</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Focus on high-value consulting</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Proactive compliance prevention</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Scale beyond your personal hours</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Bring cutting-edge solutions</strong></li>
-                        <li style="margin-bottom: 10px;">◾<strong>Command premium fees for innovation</strong></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="background: rgba(255,215,0,0.2); padding: 25px; border-radius: 15px;">
-                <h3 style="color: #1a4d4d; text-align: center; margin-bottom: 20px;">🎯 Here's What Really Happens:</h3>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                    <div style="background: rgba(26,77,77,0.3); padding: 20px; border-radius: 10px;">
-                        <h4 style="color: #FFD700; margin-bottom: 15px;">Your Relationships Matter More</h4>
-                        <p style="line-height: 1.6;">CompliTrst needs <em>your</em> trusted relationships to get in the door. Facilities buy from people they trust, not software companies.</p>
-                    </div>
-                    
-                    <div style="background: rgba(26,77,77,0.3); padding: 20px; border-radius: 10px;">
-                        <h4 style="color: #FFD700; margin-bottom: 15px;">Your Expertise Becomes More Valuable</h4>
-                        <p style="line-height: 1.6;">Instead of doing data entry, you're interpreting insights, strategizing improvements, and guiding compliance strategy.</p>
-                    </div>
-                    
-                    <div style="background: rgba(26,77,77,0.3); padding: 20px; border-radius: 10px;">
-                        <h4 style="color: #FFD700; margin-bottom: 15px;">You Become the Ringmaster</h4>
-                        <p style="line-height: 1.6;">You orchestrate the entire compliance transformation. CompliTrst is your powerful tool, but <em>you're</em> the expert wielding it.</p>
-                    </div>
-                    
-                    <div style="background: rgba(26,77,77,0.3); padding: 20px; border-radius: 10px;">
-                        <h4 style="color: #FFD700; margin-bottom: 15px;">You Scale Your Impact</h4>
-                        <p style="line-height: 1.6;">Help 50 facilities instead of 5. Your expertise reaches more clients without burning you out on manual tasks.</p>
-                    </div>
-                </div>
-                
-                <div style="background: rgba(26,77,77,0.4); padding: 20px; border-radius: 10px; margin-top: 25px; text-align: center;">
-                    <h4 style="color: #32cd32; margin-bottom: 15px;">Think of it this way:</h4>
-                    <p style="font-size: 1.1rem; line-height: 1.6;">
-                        <strong style="color: #FFD700;">A surgeon doesn't become less valuable when they get better surgical tools.</strong><br>
-                        They become more effective, more in-demand, and command higher fees.<br><br>
-                        <em style="color: #4ecdc4;">CompliTrst is your surgical robot. You're still the surgeon.</em>
-                    </p>
-                </div>
-            </div>
-        </div>
-      <!-- Partnership Opportunity Section -->
-        <div style="background: linear-gradient(145deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1)); border: 2px solid rgba(255,215,0,0.5); border-radius: 20px; padding: 40px; margin-bottom: 40px;">
-            <h2 style="color: #FFD700; text-align: center; margin-bottom: 30px; font-size: 2rem;">The Partnership Opportunity</h2>
-            
-            <div style="text-align: center; margin-bottom: 30px;">
-                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 20px;">
-                    We're looking for <strong style="color: #1a4d4d;">5 strategic partners</strong> who understand the ALF & group home compliance crisis intimately. 
-                    <strong style="color: #1a4d4d;">You bring the relationships. We bring the solution. Together, we transform an entire industry.</strong>
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px;">
-                <div style="background: rgba(26,77,77,0.3); padding: 25px; border-radius: 15px; text-align: center;">
-                    <h4 style="color: #FFD700; margin-bottom: 15px; font-size: 1.3rem;">WHO We're Looking For:</h4>
-                    <ul style="text-align: left; line-height: 1.8; list-style: none;">
-                        <li>✅ 3+ years ALF/group home consulting experience</li>
-                        <li>✅ Existing relationships with 10+ Florida facilities</li>
-                        <li>✅ Track record of successful compliance projects</li>
-                        <li>✅ Understanding of healthcare regulations</li>
-                        <li>✅ Commitment to 5+ demos in first 90 days</li>
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(26,77,77,0.3); padding: 25px; border-radius: 15px; text-align: center;">
-                    <h4 style="color: #FFD700; margin-bottom: 15px; font-size: 1.3rem;">WHAT You Get:</h4>
-                    <ul style="text-align: left; line-height: 1.8; list-style: none;">
-                        <li>✅ 30% revenue share on every deal</li>
-                        <li>✅ Exclusive Florida territory protection</li>
-                        <li>✅ Complete technical implementation support</li>
-                        <li>✅ Sales enablement tools and training</li>
-                        <li>✅ Direct access to our technical team</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="background: rgba(26,77,77,0.4); padding: 25px; border-radius: 15px; text-align: center;">
-                <h3 style="color: #FFD700; margin-bottom: 20px; font-size: 1.5rem;">WHY This Makes Your Job Easier:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-                    <div style="background: rgba(50,205,50,0.1); padding: 20px; border-radius: 10px;">
-                        <div style="font-size: 1.8rem; margin-bottom: 10px;"></div>
-                        <h4 style="color: #32cd32; margin-bottom: 8px;">Easy to Demo</h4>
-                        <p style="font-size: 0.9rem;">Show real-time compliance dashboards that wow prospects in 15 minutes</p>
-                    </div>
-                    <div style="background: rgba(50,205,50,0.1); padding: 20px; border-radius: 10px;">
-                        <div style="font-size: 1.8rem; margin-bottom: 10px;"></div>
-                        <h4 style="color: #32cd32; margin-bottom: 8px;">No Technical Hassle</h4>
-                        <p style="font-size: 0.9rem;">We handle 100% of implementation - you focus on relationships</p>
-                    </div>
-                    <div style="background: rgba(50,205,50,0.1); padding: 20px; border-radius: 10px;">
-                        <div style="font-size: 1.8rem; margin-bottom: 10px;"></div>
-                        <h4 style="color: #32cd32; margin-bottom: 8px;">Recurring Revenue</h4>
-                        <p style="font-size: 0.9rem;">Monthly subscriptions = predictable income vs one-time project fees</p>
-                    </div>
-                    <div style="background: rgba(50,205,50,0.1); padding: 20px; border-radius: 10px;">
-                        <div style="font-size: 1.8rem; margin-bottom: 10px;"></div>
-                        <h4 style="color: #32cd32; margin-bottom: 8px;">Become the Hero</h4>
-                        <p style="font-size: 0.9rem;">You're the consultant who brought them the future of compliance</p>
-                    </div>
-                </div>
-                
-                <div style="background: rgba(255,215,0,0.2); padding: 20px; border-radius: 10px; margin-top: 25px;">
-                    <h4 style="color: #1a4d4d; margin-bottom: 15px;">What This Means for Your Practice:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                        <div style="text-align: left;">
-                            <strong style="color: #1a4d4d;">✅ Faster Sales Cycles</strong><br>
-                            <small>30-90 days vs 6+ months for custom solutions</small>
-                        </div>
-                        <div style="text-align: left;">
-                            <strong style="color: #1a4d4d;">✅ Higher Close Rates</strong><br>
-                            <small>Easy monthly payment removes budget barriers</small>
-                        </div>
-                        <div style="text-align: left;">
-                            <strong style="color: #1a4d4d;">✅ Scale Without Stress</strong><br>
-                            <small>No custom development or implementation headaches</small>
-                        </div>
-                        <div style="text-align: left;">
-                            <strong style="color: #1a4d4d;">✅ Competitive Advantage</strong><br>
-                            <small>Offer what manual consultants simply cannot</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-       <!-- WHEN/WHERE Section -->
-        <div style="background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border: 2px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 40px; margin-bottom: 40px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
-                <div>
-                    <h3 style="color: #FFD700; margin-bottom: 20px; font-size: 1.8rem;">WHEN: Right Now</h3>
-                    <p style="line-height: 1.6; margin-bottom: 20px;">
-                        Partnership applications close in <strong style="color: #ff6b6b;">15 days</strong>. We're launching with limited territories to ensure partner success. 
-                    </p>
-                    <p style="line-height: 1.6;">
-                        <strong style="color: #FFD700;">First partners get the best territories and the highest revenue potential.</strong>
-                    </p>
-                </div>
-                
-                <div>
-                    <h3 style="color: #FFD700; margin-bottom: 20px; font-size: 1.8rem;">WHERE: Florida Exclusive</h3>
-                    <p style="line-height: 1.6; margin-bottom: 20px;">
-                        Florida has 3,200+ ALFs and 8,500+ group homes. We're granting exclusive territory rights to prevent partner competition.
-                    </p>
-                    <p style="line-height: 1.6;">
-                        <strong style="color: #32cd32;">Your territory = your recurring revenue stream.</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-      <!-- Social Proof -->
-        <div class="social-proof">
-            <div class="testimonial">
-                "CompliTrst didn't just solve my clients' problems - it transformed my entire business model. I went from manual compliance chaos to $5K in revenue my 30 days. The ALF and group home market was waiting for this solution."
-            </div>
-            <div class="testimonial-author">
-                - Sarah K., Miami-Dade Territory Partner<br>
-                <small>15 years ALF/Group Home consulting experience</small>
-            </div>
-        </div>
-      
       <div class="calculator-section">
   <h2 class="calculator-title">Calculate Your Partnership Revenue</h2>
 
@@ -479,7 +360,7 @@ select.form-input option {
     <div class="input-group">
       <label class="input-label">Enter ALFs in Your Network</label>
       <input type="number" id="alf-count" class="input-field" placeholder="e.g. 15">
-      <div class="input-helper">Estimate how many group homes you could refer</div>
+      <div class="input-helper">Adjust to match your current ALF clients</div>
     </div>
 
     <div class="input-group">
@@ -589,15 +470,8 @@ select.form-input option {
     document.getElementById('partner-application').onsubmit = e => { e.preventDefault(); alert('Application submitted!'); };
     calcROI();
   </script>
-    
 </body>
 </html>
-
-
-
-
-
-
 
 
 
