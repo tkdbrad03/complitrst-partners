@@ -528,6 +528,26 @@ select.form-input option {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
 }
+.opportunity-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.opportunity-section li {
+  margin-bottom: 10px;
+  padding-left: 1.6em;
+  position: relative;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.opportunity-section li::before {
+  content: '✅';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 
 
 
@@ -820,6 +840,7 @@ select.form-input option {
   </script>
 </body>
 </html>
+
 
 
 
