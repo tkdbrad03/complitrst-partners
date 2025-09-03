@@ -616,22 +616,22 @@ ul.bullets li {
   color: #fff;
 }
 .branded-button {
-    background: linear-gradient(135deg, #1fa29b, #d4af37);
-    color: white;
-    font-weight: bold;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 9999px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-  }
+  background: linear-gradient(135deg, #1fa29b, #d4af37); /* Gradient matches your Continue button */
+  color: white;
+  font-weight: bold;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 9999px; /* Fully rounded */
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
 
-  .branded-button:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-  }
+.branded-button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
 
   .form-section input,
   .form-section textarea {
@@ -963,7 +963,8 @@ ul.bullets li {
           <option value="polk">Polk County (98+ facilities)</option>
           <option value="alachua">Alachua County (65+ facilities)</option>
         </select>
-          <button type="submit">Apply for Partnership</button>
+          <button type="submit" class="branded-button">Apply for Partnership</button>
+          
         </form>
        <!-- Success Message -->
  <div id="form-success" style="display:none; margin-top: 20px; padding: 15px; background: #d4af37; color: #1a4a47; border-radius: 8px; text-align: center; font-weight: bold;">
@@ -1042,6 +1043,7 @@ ul.bullets li {
     
 
   
+
 
 
 
