@@ -596,6 +596,35 @@ ul.bullets li {
   margin: 0 auto;
   max-width: 90%;
 }
+    .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.contact-form label {
+  color: #fff;
+  font-weight: bold;
+}
+.contact-form input,
+.contact-form select {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.contact-form button {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #32cd32, #ffd700);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 
 
   </style>
@@ -866,14 +895,47 @@ ul.bullets li {
           <div><span id="cd-seconds">0</span>Secs</div>
         </div>
         <h2 class="headline">Ready to Claim Your Territory?</h2>
-        <form id="partner-application">
-          <div class="form-group"><input type="text" class="form-input" placeholder="Full Name" required></div>
-          <div class="form-group"><input type="email" class="form-input" placeholder="Email Address" required></div>
-          <div class="form-group"><input type="tel" class="form-input" placeholder="Phone Number" required></div>
-          <div class="form-group"><input type="text" class="form-input" placeholder="# of Current Clients" required></div>
-          <div class="form-group">
-            <select class="form-input" required>
-              <option value="">Preferred Territory</option>
+        <form
+  action="https://formspree.io/f/mzzajvke"
+  method="POST"
+  class="contact-form"
+>
+  <label for="name">Full Name</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Your full name"
+    required
+  />
+
+  <label for="email">Email Address</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="your@example.com"
+    required
+  />
+
+  <label for="phone">Phone Number</label>
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    placeholder="Your phone number"
+  />
+
+  <label for="clients"># of Current Clients</label>
+  <input
+    type="number"
+    id="clients"
+    name="clients"
+    placeholder="e.g., 12"
+  />
+  <label for="territory">Preferred Territory</label>
+  <select id="territory" name="territory" required>
+    <option value="" disabled selected>Select your territory</option>
               <option value="miami-dade">Miami-Dade County (302+ facilities)</option>
           <option value="broward">Broward County (265+ facilities)</option>
           <option value="orange">Orange County (280+ facilities)</option>
@@ -885,11 +947,8 @@ ul.bullets li {
           <option value="polk">Polk County (98+ facilities)</option>
           <option value="alachua">Alachua County (65+ facilities)</option>
         </select>
-      </div>
-      <button type="submit" class="cta-button">Apply for Partnership</button>
-    </form>
-  </div>
-
+          <button type="submit">Apply for Partnership</button>
+        </form>
 </div>
 
   <script>
@@ -934,55 +993,12 @@ ul.bullets li {
   </script>
 </body>
 </html>
-<form
-  action="https://formspree.io/f/mzzajvke"
-  method="POST"
-  class="contact-form"
->
-  <label for="name">Full Name</label>
-  <input
-    type="text"
-    id="name"
-    name="name"
-    placeholder="Your full name"
-    required
-  />
 
-  <label for="email">Email Address</label>
-  <input
-    type="email"
-    id="email"
-    name="email"
-    placeholder="your@example.com"
-    required
-  />
 
-  <label for="phone">Phone Number</label>
-  <input
-    type="tel"
-    id="phone"
-    name="phone"
-    placeholder="Your phone number"
-  />
+  
+    
 
-  <label for="clients"># of Current Clients</label>
-  <input
-    type="number"
-    id="clients"
-    name="clients"
-    placeholder="e.g., 12"
-  />
-
-  <label for="territory">Preferred Territory</label>
-  <select id="territory" name="territory" required>
-    <option value="" disabled selected>Select your territory</option>
-    <option value="Florida">Florida</option>
-    <option value="Georgia">Georgia</option>
-    <option value="Other">Other</option>
-  </select>
-
-  <button type="submit">Apply for Partnership</button>
-</form>
+  
 
 
 
