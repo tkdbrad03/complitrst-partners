@@ -548,13 +548,38 @@
 
     /* Responsive design */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 3rem; }
-      .section h2 { font-size: 2.2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .section h2 { font-size: 2rem; }
+      .section { padding: 40px 20px; margin: 40px 0; }
       .tier-card { margin-bottom: 30px; }
-      .overview-grid { grid-template-columns: 1fr; }
-      .tiers-container { grid-template-columns: 1fr; }
-      .gate h1 { font-size: 2.2rem; }
-      .gate input { width: 250px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 20px; }
+      .tiers-container { grid-template-columns: 1fr; gap: 30px; }
+      .gate h1 { font-size: 2rem; }
+      .gate-content { padding: 40px 20px; margin: 20px; }
+      .gate-input { flex-direction: column; gap: 15px; }
+      .gate input { width: 100%; max-width: 280px; }
+      .gate button { width: 100%; max-width: 200px; }
+      .logo-text { font-size: 2.5rem; }
+      .logo-container { flex-direction: column; gap: 15px; }
+      .container { padding: 0 15px; }
+      .hero { padding: 60px 0; }
+      .hero p { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; line-height: 1.1; }
+      .section h2 { font-size: 1.8rem; }
+      .gate h1 { font-size: 1.6rem; }
+      .gate-content div:first-child { flex-direction: column; gap: 10px; }
+      .gate-content div:first-child img { height: 50px; }
+      .gate-content div:first-child div { font-size: 2rem; }
+      .logo-text { font-size: 2rem; }
+      .logo-img { height: 60px; }
+      .tier-price { font-size: 1.8rem; }
+      .overview-grid { gap: 15px; }
+      .overview-card { padding: 20px; }
+      .hero p { font-size: 1.1rem; }
+      .section { padding: 30px 15px; }
     }
 
     /* Success message */
@@ -592,6 +617,10 @@
   <!-- Access Gate -->
   <div class="gate" id="gate">
     <div class="gate-content">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+        <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/complitrst-logo_transparent.png" alt="CompliTrst Logo" style="height: 60px; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));">
+        <div style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">COMPLITRST™</div>
+      </div>
       <h1>Exclusive Partner Access</h1>
       <p>Enter your partnership access code to unlock this exclusive opportunity</p>
       <div class="gate-input">
