@@ -592,7 +592,66 @@
       text-align: center;
       display: none;
     }
+/* FAQ Section Styles */
+    .faq-container {
+      margin-top: 40px;
+    }
 
+    .faq-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary-gold);
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      color: var(--secondary-gold);
+    }
+
+    .faq-toggle {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      color: var(--primary-gold);
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer.active {
+      max-height: 300px;
+    }
+
+    .faq-answer-content {
+      padding: 0 20px 20px 20px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
     /* Loading animation */
     .loading {
       display: inline-block;
@@ -858,7 +917,131 @@
           <li><strong>Exclusive Territory & Licensing:</strong> Protect your market with city or zip exclusivity and unlock passive income through overrides.</li>
         </ul>
       </section>
+<!-- FAQ Section -->
+      <section class="section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is the CompliTrst Partner Agency Program?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                It's a turnkey license to operate your own compliance agency using the CompliTrst™ platform. You receive training, certification, editable SOPs and templates, software seats, marketing tools, and ongoing support so you can deliver high-value compliance services to assisted living facilities and group homes.
+              </div>
+            </div>
+          </div>
 
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Who qualifies to join?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                We welcome experienced nurses, healthcare professionals, consultants, and compliance professionals who want to build a profitable agency. If you have a passion for helping facilities stay compliant and are ready to invest in your own business, you're a great fit.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What's included in the program?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Depending on your tier (Starter, Pro, or Elite), you get full certification, business setup, customizable policies and forms, a pre-built website, 5–15 facility license seats, group coaching, and access to our partner community. Elite partners also receive city/zip exclusivity, recruiting rights, and a 1-on-1 coaching call with Dr. TMac.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How much does it cost to join?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Starter partners pay $7,500 upfront with $297/month after a 60-day grace period. Pro partners pay $12,500 upfront with $447/month, and Elite partners pay $20,000 upfront with $697/month. Your monthly license doesn't begin until Day 61. Payment plans are available - contact us to discuss flexible options.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I make money as a partner?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                You charge facilities a setup fee (typically $3,500–$5,000) and a monthly retainer (often $1,000 per facility) for compliance management. Partners who manage 6–10 facilities can generate six-figure annual income.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is the "Go Live in 30" bonus?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                If you onboard your first facility within 30 days of enrolling, you'll unlock an extra facility license seat at no extra cost — the 6th seat for Starter, 11th for Pro, or 16th for Elite.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do I need to be in Florida?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Although the program is piloted in Florida, we welcome consultants from anywhere in the United States. You can serve clients remotely and expand to other states as we grow.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What happens during the first 60 days?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Your first two months are fee-free, giving you time to complete your certification, customize your business setup, and onboard your first facility without any monthly charges.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Is there support after I sign up?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Yes. You'll receive ongoing group coaching, access to a private partner community, and help desk support. Elite partners also receive a dedicated coaching call with Dr. TMac.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I apply?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Complete the application form below. We'll review your details and contact you to discuss next steps and confirm your enrollment.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Application Form -->
       <section class="section">
         <h2>Apply to Join</h2>
@@ -1032,6 +1215,29 @@
 
     // Smooth scrolling for better UX
     document.documentElement.style.scrollBehavior = 'smooth';
+    // FAQ Toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        const toggle = question.querySelector('.faq-toggle');
+        
+        // Close other open FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+          if (item !== faqItem) {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').classList.remove('active');
+            item.querySelector('.faq-toggle').textContent = '+';
+          }
+        });
+        
+        // Toggle current FAQ
+        faqItem.classList.toggle('active');
+        answer.classList.toggle('active');
+        toggle.textContent = faqItem.classList.contains('active') ? '+' : '+';
+        toggle.style.transform = faqItem.classList.contains('active') ? 'rotate(45deg)' : 'rotate(0deg)';
+      });
+    });
   </script>
 </body>
 </html>
