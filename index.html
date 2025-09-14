@@ -1302,5 +1302,59 @@
       });
     });
   </script>
+          <script>
+// Hide Stripe button initially
+document.addEventListener('DOMContentLoaded', function() {
+    const stripeButton = document.querySelector('stripe-buy-button');
+    const formFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+    
+    if (stripeButton) {
+        stripeButton.style.display = 'none';
+    }
+    
+    // Create a placeholder button
+    const placeholderBtn = document.createElement('button');
+    placeholderBtn.innerHTML = 'Complete Form to Continue →';
+    placeholderBtn.className = 'submit-btn';
+    placeholderBtn.style.opacity = '0.5';
+    placeholderBtn.style.cursor = 'not-allowed';
+    placeholderBtn.disabled = true;
+    
+    // Insert placeholder button
+    if (stripeButton && stripeButton.parentNode) {
+        stripeButton.parentNode.insertBefore(placeholderBtn, stripeButton);
+    }
+    
+    // Check form completion
+    function checkFormCompletion() {
+        let allFilled = true;
+        
+        formFields.forEach(field => {
+            if (!field.value.trim()) {
+                allFilled = false;
+            }
+        });
+        
+        if (allFilled) {
+            // Show Stripe button, hide placeholder
+            if (stripeButton) stripeButton.style.display = 'block';
+            if (placeholderBtn) placeholderBtn.style.display = 'none';
+        } else {
+            // Hide Stripe button, show placeholder
+            if (stripeButton) stripeButton.style.display = 'none';
+            if (placeholderBtn) placeholderBtn.style.display = 'block';
+        }
+    }
+    
+    // Listen for changes on all form fields
+    formFields.forEach(field => {
+        field.addEventListener('input', checkFormCompletion);
+        field.addEventListener('change', checkFormCompletion);
+    });
+    
+    // Initial check
+    checkFormCompletion();
+});
+</script>
 </body>
 </html>
