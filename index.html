@@ -254,7 +254,7 @@
       font-size: 1.4rem;
       max-width: 900px;
       margin: 0 auto 50px;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 300;
       animation: heroText 1s ease-out 0.3s both;
     }
@@ -298,7 +298,294 @@
       background-clip: text;
     }
 
-    /* etc... (you had remaining styles for tier cards, FAQ, etc.) */
+    /* Overview grid with 3D cards */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .overview-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overview-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold), var(--light-teal));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .overview-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .overview-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    }
+
+    .overview-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-gold);
+      margin-bottom: 15px;
+    }
+
+    /* Tier cards with premium styling */
+    .tiers-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .tier-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 2px solid transparent;
+      border-radius: 25px;
+      padding: 40px 30px;
+      text-align: left;
+      position: relative;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .tier-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 25px;
+      padding: 2px;
+      background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold), var(--light-teal));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: exclude;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3);
+    }
+
+    .tier-card.featured {
+      border-color: var(--primary-gold);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    }
+
+    .tier-card h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tier-price {
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: var(--secondary-gold);
+    }
+
+    .tier-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .tier-features li {
+      padding: 8px 0 8px 25px;
+      position: relative;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .tier-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #32cd32;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .tier-monthly {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+    }
+
+    /* Bonus section with special effects */
+    .bonus-section {
+      background: linear-gradient(135deg, rgba(255, 223, 128, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+      border: 2px solid rgba(255, 223, 128, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bonus-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, rgba(255, 223, 128, 0.1), transparent 30%);
+      animation: rotate 4s linear infinite;
+    }
+
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+
+    .bonus-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Application form styling */
+    .application-form {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--primary-gold);
+      font-size: 1.1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, var(--light-teal), var(--primary-gold));
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 35px rgba(66, 150, 142, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(66, 150, 142, 0.6);
+    }
+
+    /* Benefits list styling */
+    .benefits-list {
+      list-style: none;
+      margin: 30px 0;
+    }
+
+    .benefits-list li {
+      padding: 15px 0 15px 40px;
+      position: relative;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .benefits-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 15px;
+      color: #32cd32;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .section h2 { font-size: 2rem; }
+      .section { padding: 40px 20px; margin: 40px 0; }
+      .tier-card { margin-bottom: 30px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 20px; }
+      .tiers-container { grid-template-columns: 1fr; gap: 30px; }
+      .gate h1 { font-size: 2rem; }
+      .gate-content { padding: 40px 20px; margin: 20px; }
+      .gate-input { flex-direction: column; gap: 15px; }
+      .gate input { width: 100%; max-width: 280px; }
+      .gate button { width: 100%; max-width: 200px; }
+      .logo-text { font-size: 2.5rem; }
+      .logo-container { flex-direction: column; gap: 15px; }
+      .container { padding: 0 15px; }
+      .hero { padding: 60px 0; }
+      .hero p { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; line-height: 1.1; }
+      .section h2 { font-size: 1.8rem; }
+      .gate h1 { font-size: 1.6rem; }
+      .gate-content div:first-child { flex-direction: column; gap: 10px; }
+      .gate-content div:first-child img { height: 50px; }
+      .gate-content div:first-child div { font-size: 2rem; }
+      .logo-text { font-size: 2rem; }
+      .logo-img { height: 60px; }
+      .tier-price { font-size: 1.8rem; }
+      .overview-grid { gap: 15px; }
+      .overview-card { padding: 20px; }
+      .hero p { font-size: 1.1rem; }
+      .section { padding: 30px 15px; }
+    }
 
     /* Success message */
     .success-message {
@@ -309,11 +596,83 @@
       margin-top: 20px;
       text-align: center;
       display: none;
-      color: white;
+    }
+/* FAQ Section Styles */
+    .faq-container {
+      margin-top: 40px;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary-gold);
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      color: var(--secondary-gold);
+    }
+
+    .faq-toggle {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      color: var(--primary-gold);
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer.active {
+      max-height: 300px;
+    }
+
+    .faq-answer-content {
+      padding: 0 20px 20px 20px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: var(--primary-gold);
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 10px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
   <!-- Floating particles background -->
@@ -369,16 +728,388 @@
         </div>
       </section>
 
-      <!-- (Other sections: Pain Points, Solution, Overview, Tier cards, Bonus, Revenue, etc.) -->
-      <!-- I'm assuming you keep all those unchanged. -->
+      <!-- Pain Points Section -->
+      <section class="section">
+        <h2>The Compliance Consulting Problem</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.9);">
+          If you're in compliance consulting, you know these struggles all too well...
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+          <div style="background: rgba(255, 68, 68, 0.1); border: 1px solid rgba(255, 68, 68, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #ff6b6b; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #ff6b6b; margin-bottom: 15px;">Drowning in Paperwork</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Spending 80% of your time on administrative tasks, forms, and documentation instead of actually helping facilities improve care quality.
+            </p>
+          </div>
+          <div style="background: rgba(255, 68, 68, 0.1); border: 1px solid rgba(255, 68, 68, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #ff6b6b; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #ff6b6b; margin-bottom: 15px;">Income Ceiling</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Trading time for dollars with no scalability. Can only serve so many clients before you're completely burned out.
+            </p>
+          </div>
+          <div style="background: rgba(255, 68, 68, 0.1); border: 1px solid rgba(255, 68, 68, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #ff6b6b; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #ff6b6b; margin-bottom: 15px;">Constant Stress</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Always worried about missing compliance updates, regulation changes, or making costly mistakes that could hurt your clients.
+            </p>
+          </div>
+          <div style="background: rgba(255, 68, 68, 0.1); border: 1px solid rgba(255, 68, 68, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #ff6b6b; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #ff6b6b; margin-bottom: 15px;">No Systems</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Flying by the seat of your pants with homemade spreadsheets and hoping you don't miss critical deadlines or requirements.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <!-- Application Form Section -->
+      <!-- Solution Section -->
+      <section class="section">
+        <h2>The CompliTrst Solution</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.9);">
+          What if you could transform your compliance practice into a scalable, profitable agency?
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+          <div style="background: rgba(50, 205, 50, 0.1); border: 1px solid rgba(50, 205, 50, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #32cd32; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #32cd32; margin-bottom: 15px;">Automated Systems</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Our platform handles the heavy lifting - automated compliance tracking, deadline reminders, and regulatory updates so you focus on high-value consulting.
+            </p>
+          </div>
+          <div style="background: rgba(50, 205, 50, 0.1); border: 1px solid rgba(50, 205, 50, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #32cd32; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #32cd32; margin-bottom: 15px;">Scalable Revenue</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Serve multiple facilities efficiently with monthly retainers. Our proven model shows partners earning $100K+ annually with just 6-10 clients.
+            </p>
+          </div>
+          <div style="background: rgba(50, 205, 50, 0.1); border: 1px solid rgba(50, 205, 50, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #32cd32; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #32cd32; margin-bottom: 15px;">Done-For-You Business</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Complete business setup, marketing materials, SOPs, templates, and ongoing support. You get a turnkey operation, not just software.
+            </p>
+          </div>
+          <div style="background: rgba(50, 205, 50, 0.1); border: 1px solid rgba(50, 205, 50, 0.3); border-radius: 15px; padding: 25px;">
+            <div style="color: #32cd32; font-size: 2rem; margin-bottom: 15px;"></div>
+            <h3 style="color: #32cd32; margin-bottom: 15px;">Risk Protection</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">
+              Never miss another regulation update. Our system keeps you and your clients compliant with automated alerts and comprehensive tracking.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview Section -->
+      <section class="section">
+        <h2>The Complete Business Blueprint</h2>
+        <div class="overview-grid">
+          <div class="overview-card">
+            <h3>Who</h3>
+            <p>Experienced nurses (especially those burned out from bedside work), compliance consultants, and healthcare professionals ready to step into leadership and build their own compliance agency.</p>
+          </div>
+          <div class="overview-card">
+            <h3>What</h3>
+            <p>A turnkey business model: certification, templates, software access, marketing tools, and ongoing support to operate your own compliance agency.</p>
+          </div>
+          <div class="overview-card">
+            <h3>When</h3>
+            <p>Enrollment is open now, with a 60-day grace period to complete your training and onboard your first clients at no monthly cost.</p>
+          </div>
+          <div class="overview-card">
+            <h3>Where</h3>
+            <p>Pilot initially focused on Florida, but consultants from anywhere can apply and deliver services from any location.</p>
+          </div>
+          <div class="overview-card">
+            <h3>Why</h3>
+            <p>Transform manual compliance work into a scalable, high-revenue service; help facilities avoid fines and improve care while you build a six-figure business.</p>
+          </div>
+          <div class="overview-card">
+            <h3>How</h3>
+            <p>Apply below, get trained and certified, launch your agency, onboard your first facility, and start earning using the CompliTrst™ platform.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tier Selection -->
+      <section class="section">
+        <h2>Choose Your Partner Agency Tier</h2>
+        <div class="tiers-container">
+          <div class="tier-card">
+            <h3>Agency Starter</h3>
+            <div class="tier-price">$7,500 Upfront</div>
+            <ul class="tier-features">
+              <li>Full certification + business setup</li>
+              <li>SOPs & editable compliance templates</li>
+              <li>Pre‑built website template</li>
+              <li>5 facility license seats</li>
+              <li>Private Telegram group access</li>
+              <li>Group coaching with Dr. TMac</li>
+            </ul>
+            <div class="tier-monthly">$297/mo after 60 days</div>
+          </div>
+          <div class="tier-card featured">
+            <h3>Agency Pro</h3>
+            <div class="tier-price">$12,500 Upfront</div>
+            <ul class="tier-features">
+              <li>Everything in Starter</li>
+              <li>10 facility license seats</li>
+              <li>Live onboarding support sessions</li>
+              <li>Marketing tools & launch checklist</li>
+              <li>Priority partner support</li>
+            </ul>
+            <div class="tier-monthly">$447/mo after 60 days</div>
+          </div>
+          <div class="tier-card">
+            <h3>Agency Elite</h3>
+            <div class="tier-price">$20,000 Upfront</div>
+            <ul class="tier-features">
+              <li>Everything in Pro</li>
+              <li>City/Zip territory exclusivity</li>
+              <li>Ability to recruit other partners</li>
+              <li>15% override on referral licenses</li>
+              <li>1:1 coaching call with Dr. TMac</li>
+              <li>VIP Telegram lane + future agent tools</li>
+            </ul>
+            <div class="tier-monthly">$697/mo after 60 days</div>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top: 30px; font-size: 1rem; color: rgba(255,255,255,0.8);">
+          <strong>Note:</strong> Your monthly license fee doesn't begin until Day 61, giving you time to complete your training and onboard your first clients.
+        </p>
+        <p style="text-align:center; margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+          *Payment plans available. Contact us to discuss flexible payment options.
+        </p>
+      </section>
+
+      <!-- Bonus Section -->
+      <section class="section bonus-section">
+        <div class="bonus-content">
+          <h2>Launch Bonus</h2>
+          <div style="text-align: center; padding: 20px;">
+            <h3 style="color: var(--secondary-gold); font-size: 2.2rem; margin-bottom: 20px;">Go Live in 30</h3>
+            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+              Onboard your first paying facility within your first 30 days and we'll unlock an additional 
+              facility license seat at no extra cost — 6th for Starter, 11th for Pro, or 16th for Elite.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Revenue Section -->
+      <section class="section">
+        <h2>Earning Potential</h2>
+        <p style="text-align: center; font-size: 1.3rem; max-width: 900px; margin: 0 auto;">
+          Our partners can generate six‑figure incomes by bundling compliance services with our platform. 
+          Charge $1,000 per facility per month with a $3,500—$5,000 setup fee and you'll cross $100K/year with 
+          as few as six clients. Scale to 10+ facilities to unlock $150K+ in annual revenue.
+        </p>
+      </section>
+
+      <!-- Benefits Section -->
+      <section class="section">
+        <h2>Why Join the CompliTrst Partner Agency?</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px;">Here's why our partners love this opportunity:</p>
+        <ul class="benefits-list">
+          <li><strong>Business in a Box:</strong> Everything you need — training, templates, software, and support — is provided so you can start fast.</li>
+          <li><strong>Six-Figure Potential:</strong> A realistic path to $100K+ annually by serving a handful of facilities with high-value retainers.</li>
+          <li><strong>Scalability:</strong> Manage multiple facilities efficiently with automation, reporting, and hands-on support.</li>
+          <li><strong>Community & Support:</strong> Direct access to our expert team and a growing network of fellow compliance professionals.</li>
+          <li><strong>Exclusive Territory & Licensing:</strong> Protect your market with city or zip exclusivity and unlock passive income through overrides.</li>
+        </ul>
+      </section>
+<!-- FAQ Section -->
+      <section class="section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is the CompliTrst Partner Agency Program?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                It's a turnkey license to operate your own compliance agency using the CompliTrst™ platform. You receive training, certification, editable SOPs and templates, software seats, marketing tools, and ongoing support so you can deliver high-value compliance services to assisted living facilities and group homes.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Who qualifies to join?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                We welcome experienced nurses, healthcare professionals, consultants, and compliance professionals who want to build a profitable agency. If you have a passion for helping facilities stay compliant and are ready to invest in your own business, you're a great fit.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What's included in the program?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Depending on your tier (Starter, Pro, or Elite), you get full certification, business setup, customizable policies and forms, a pre-built website, 5–15 facility license seats, group coaching, and access to our partner community. Elite partners also receive city/zip exclusivity, recruiting rights, and a 1-on-1 coaching call with Dr. TMac.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How much does it cost to join?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Starter partners pay $7,500 upfront with $297/month after a 60-day grace period. Pro partners pay $12,500 upfront with $447/month, and Elite partners pay $20,000 upfront with $697/month. Your monthly license doesn't begin until Day 61. Payment plans are available - contact us to discuss flexible options.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I make money as a partner?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                You charge facilities a setup fee (typically $3,500–$5,000) and a monthly retainer (often $1,000 per facility) for compliance management. Partners who manage 6–10 facilities can generate six-figure annual income.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is the "Go Live in 30" bonus?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                If you onboard your first facility within 30 days of enrolling, you'll unlock an extra facility license seat at no extra cost — the 6th seat for Starter, 11th for Pro, or 16th for Elite.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do I need to be in Florida?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Although the program is piloted in Florida, we welcome consultants from anywhere in the United States. You can serve clients remotely and expand to other states as we grow.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What happens during the first 60 days?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Your first two months are fee-free, giving you time to complete your certification, customize your business setup, and onboard your first facility without any monthly charges.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Is there support after I sign up?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Yes. You'll receive ongoing group coaching, access to a private partner community, and help desk support. Elite partners also receive a dedicated coaching call with Dr. TMac.
+              </div>
+            </div>
+          </div>
+          <!-- Referral Program Section -->
+<section class="section" style="background: linear-gradient(135deg, rgba(66, 150, 142, 0.1) 0%, rgba(42, 150, 142, 0.05) 100%); border: 2px solid rgba(66, 150, 142, 0.3);">
+  <h2 style="color: var(--light-teal);">Not Ready to Partner? Earn Through Referrals</h2>
+  <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.9);">
+    If you're not quite ready for a full partner commitment but know facilities that need compliance help, 
+    our referral program offers significant earning potential with zero investment.
+  </p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0;">
+    <div style="background: rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 30px; text-align: center;">
+      <h3 style="color: var(--light-teal); font-size: 1.8rem; margin-bottom: 15px;">Upfront Commission</h3>
+      <div style="font-size: 3rem; font-weight: 900; color: var(--secondary-gold); margin-bottom: 15px;">25%</div>
+      <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 1.1rem;">
+        Of the facility's setup fee when they onboard. 
+      </p>
+    </div>
+    
+    <div style="background: rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 30px; text-align: center;">
+      <h3 style="color: var(--light-teal); font-size: 1.8rem; margin-bottom: 15px;">Monthly Residual</h3>
+      <div style="font-size: 3rem; font-weight: 900; color: var(--secondary-gold); margin-bottom: 15px;">10%</div>
+      <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 1.1rem;">
+        Of their monthly retainer for as long as they remain a client.
+      </p>
+    </div>
+  </div>
+  
+  <div style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 25px; margin: 30px 0;">
+    <h4 style="color: var(--primary-gold); margin-bottom: 15px; text-align: center;">How It Works</h4>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <div style="text-align: center;">
+        <div style="color: var(--light-teal); font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">1. Refer</div>
+        <p style="margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.8);">
+          Connect us with facilities needing compliance help
+        </p>
+      </div>
+      <div style="text-align: center;">
+        <div style="color: var(--light-teal); font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">2. We Close</div>
+        <p style="margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.8);">
+          Our team handles all sales and onboarding
+        </p>
+      </div>
+      <div style="text-align: center;">
+        <div style="color: var(--light-teal); font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">3. You Earn</div>
+        <p style="margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.8);">
+          Get paid upfront plus monthly residuals.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div style="text-align: center; background: rgba(66, 150, 142, 0.2); border-radius: 15px; padding: 20px; margin-top: 30px;">
+    <h4 style="color: var(--light-teal); margin-bottom: 10px;">Example: Refer 5 Facilities</h4>
+    <p style="margin: 0; font-size: 1.1rem; color: rgba(255,255,255,0.9);">
+      <strong>Upfront:</strong> $2,100 - $3,250 | <strong>Monthly Recurring:</strong> $220 - $450
+    </p>
+  </div>
+</section>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I apply?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Complete the application form below. We'll review your details and contact you to discuss next steps and confirm your enrollment.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Application Form -->
       <section class="section">
         <h2>Apply to Join</h2>
         <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px;">
           Ready to build your own compliance agency? Complete the application below and we'll be in touch with next steps.
         </p>
-
         <form class="application-form" action="https://formspree.io/f/xbljkqdw" method="POST">
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -412,41 +1143,30 @@
               <option value="Starter">Agency Starter</option>
               <option value="Pro">Agency Pro</option>
               <option value="Elite">Agency Elite</option>
-              <option value="referral-only">Referral Only (No Initial Investment)</option>
+              <option value="N/A">Not Applicable - Referral Only</option>
             </select>
           </div>
 
-          <!-- Success Message Box for Referral Only -->
-          <div id="referralSuccess" class="success-message" style="display: none;">
-            ✅ Thank you! We will review your application and get back with you within 24–48 hours.
+          <div class="form-group">
+            <label for="message">Additional Information or Questions</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your experience and goals..."></textarea>
           </div>
 
           <!-- Honeypot field -->
           <input type="text" name="_gotcha" style="display:none">
 
           <div style="text-align: center;">
-            <!-- Stripe Buy Button -->
-            <stripe-buy-button
-              buy-button-id="buy_btn_1S7LkFL7GYxhlk1SB5pHdSYz"
-              publishable-key="pk_live_51RfjeaL7GYxhlk1SUvjfqpGx8yOcu2RtfFrqzFjBJ3tDGEoFW2i7kkUvEaDhPmID1ETtWJKOMnlIq3wLMUH4VZ8v0064yZ5oAm"
-              style="display: none;"
-            ></stripe-buy-button>
+            <button type="submit" class="submit-btn">Submit Application</button>
+          </div>
 
-            <!-- Referral Submit Button -->
-            <button type="submit" class="submit-btn referral-btn" style="display: none;">
-              Submit Referral Application
-            </button>
-
-            <!-- Default Disabled Button -->
-            <button type="button" class="submit-btn" id="defaultBtn" style="opacity: 0.5; cursor: not-allowed;" disabled>
-              Select Partner Tier to Continue
-            </button>
+          <div class="success-message" id="successMessage">
+            <h3 style="color: #32cd32; margin-bottom: 10px;">Application Submitted!</h3>
+            <p>Thank you for your interest. We'll be in touch within 24-48 hours.</p>
           </div>
         </form>
       </section>
-
-    </div><!-- end container -->
-  </div><!-- end content -->
+    </div>
+  </div>
 
   <script>
     // Access gate functionality
@@ -456,6 +1176,20 @@
     const codeButton = document.getElementById('codeButton');
     const codeInput = document.getElementById('codeInput');
 
+    // Create floating particles
+    function createParticles() {
+      const particles = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particles.appendChild(particle);
+      }
+    }
+
+    // Gate submission
     function submitCode() {
       const entered = codeInput.value.trim();
       if (entered === VALID_CODE) {
@@ -465,12 +1199,14 @@
           gate.style.display = 'none';
           content.style.display = 'block';
           document.body.style.overflow = 'auto';
+          // Animate content in
           setTimeout(() => {
             content.style.opacity = '1';
             content.style.transform = 'translateY(0)';
           }, 100);
         }, 800);
       } else {
+        // Show error animation
         codeInput.style.borderColor = '#ff4444';
         codeInput.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.5)';
         codeButton.style.background = 'linear-gradient(45deg, #ff4444, #cc3333)';
@@ -485,6 +1221,7 @@
       }
     }
 
+    // Event listeners
     codeButton.addEventListener('click', submitCode);
     codeInput.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
@@ -492,103 +1229,76 @@
       }
     });
 
-    // Floating particles initializer
-    function createParticles() {
-      const particles = document.getElementById('particles');
-      for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 20 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-        particles.appendChild(particle);
-      }
-    }
+    // Form submission
+    document.querySelector('.application-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitBtn = document.querySelector('.submit-btn');
+      const successMessage = document.getElementById('successMessage');
+      
+      // Show loading state
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Submitting... <div class="loading"></div>';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission (replace with actual form handling)
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+      }, 2000);
+    });
 
-    document.addEventListener('DOMContentLoaded', function () {
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
       createParticles();
-
-      // Animation setup for content
       content.style.opacity = '0';
       content.style.transform = 'translateY(20px)';
       content.style.transition = 'all 0.8s ease';
-
-      // IntersectionObserver animations (your existing logic)
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-          }
-        });
-      }, observerOptions);
-
+      
+      // Observe sections for animations
       document.querySelectorAll('.section').forEach(section => {
         observer.observe(section);
       });
     });
 
-    // Form & Button Display / Referral vs Paid Logic
-    document.addEventListener('DOMContentLoaded', function () {
-      const tierSelect = document.querySelector('select[name="tier"]');
-      const stripeButton = document.querySelector('stripe-buy-button');
-      const referralButton = document.querySelector('.referral-btn');
-      const defaultButton = document.getElementById('defaultBtn');
-      const referralSuccess = document.getElementById('referralSuccess');
-      const formFields = document.querySelectorAll('input[required], select[required], textarea[required]');
-      const applicationForm = document.querySelector('.application-form');
-
-      function updateButtonDisplay() {
-        const selectedTier = tierSelect.value;
-        const allFieldsFilled = Array.from(formFields).every(field => field.value.trim() !== '');
-
-        // Reset all
-        stripeButton.style.display = 'none';
-        referralButton.style.display = 'none';
-        defaultButton.style.display = 'none';
-        referralSuccess.style.display = 'none';
-
-        if (!allFieldsFilled) {
-          defaultButton.style.display = 'block';
-          defaultButton.textContent = 'Complete Form to Continue';
-        } else if (selectedTier === '') {
-          defaultButton.style.display = 'block';
-          defaultButton.textContent = 'Select Partner Tier to Continue';
-        } else if (selectedTier === 'referral-only') {
-          referralButton.style.display = 'block';
-        } else {
-          stripeButton.style.display = 'block';
-        }
-      }
-
-      formFields.forEach(field => {
-        field.addEventListener('input', updateButtonDisplay);
-        field.addEventListener('change', updateButtonDisplay);
-      });
-      tierSelect.addEventListener('change', updateButtonDisplay);
-      updateButtonDisplay();
-
-      referralButton.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(applicationForm);
-        fetch(applicationForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        })
-        .then(response => {
-          referralSuccess.style.display = 'block';
-          referralSuccess.scrollIntoView({ behavior: 'smooth' });
-          applicationForm.reset();
-          updateButtonDisplay();
-        })
-        .catch(error => {
-          alert('Something went wrong. Please try again later.');
+    // Smooth scrolling for better UX
+    document.documentElement.style.scrollBehavior = 'smooth';
+    // FAQ Toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        const toggle = question.querySelector('.faq-toggle');
+        
+        // Close other open FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+          if (item !== faqItem) {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').classList.remove('active');
+            item.querySelector('.faq-toggle').textContent = '+';
+          }
         });
+        
+        // Toggle current FAQ
+        faqItem.classList.toggle('active');
+        answer.classList.toggle('active');
+        toggle.textContent = faqItem.classList.contains('active') ? '+' : '+';
+        toggle.style.transform = faqItem.classList.contains('active') ? 'rotate(45deg)' : 'rotate(0deg)';
       });
     });
   </script>
