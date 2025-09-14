@@ -1150,7 +1150,36 @@
             </select>
           </div>
 
-        
+          <div class="form-group">
+            <label for="message">Additional Information or Questions</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your experience and goals..."></textarea>
+          </div>
+
+          <!-- Honeypot field -->
+          <input type="text" name="_gotcha" style="display:none">
+
+          <div style="text-align: center;">
+    <!-- Stripe button for paid partners -->
+    <stripe-buy-button
+        buy-button-id="buy_btn_1S7LkFL7GYxhlk1SB5pHdSYz"
+        publishable-key="pk_live_51RfjeaL7GYxhlk1SUvjfqpGx8yOcu2RtfFrqzFjBJ3tDGEoFW2i7kkUvEaDhPmID1ETtWJKOMnlIq3wLMUH4VZ8v0064yZ5oAm"
+        style="display: none;"
+    >
+    </stripe-buy-button>
+    
+    <!-- Application button for referral only -->
+    <button type="submit" class="submit-btn referral-btn" style="display: none;">
+        Submit Referral Application
+    </button>
+    
+    <!-- Default disabled button -->
+    <button type="button" class="submit-btn" id="defaultBtn" style="opacity: 0.5; cursor: not-allowed;" disabled>
+        Select Partner Tier to Continue
+    </button>
+</div>
+
+          
+
   <script>
     // Access gate functionality
     const VALID_CODE = 'Partner2025';
@@ -1286,52 +1315,121 @@
     });
   </script>
           <script>
+// Hide Stripe button initially
 document.addEventListener('DOMContentLoaded', function() {
-    const tierSelect = document.getElementById('tier');
-    const buttonContainer = document.getElementById('button-container');
+    const stripeButton = document.querySelector('stripe-buy-button');
     const formFields = document.querySelectorAll('input[required], select[required], textarea[required]');
     
-    function updateButtons() {
-        const selectedTier = tierSelect.value;
-        const allFieldsFilled = Array.from(formFields).every(field => field.value.trim() !== '');
+    if (stripeButton) {
+        stripeButton.style.display = 'none';
+    }
+    
+    // Create a placeholder button
+    const placeholderBtn = document.createElement('button');
+    placeholderBtn.innerHTML = 'Complete Form to Continue →';
+    placeholderBtn.className = 'submit-btn';
+    placeholderBtn.style.opacity = '0.5';
+    placeholderBtn.style.cursor = 'not-allowed';
+    placeholderBtn.disabled = true;
+    
+    // Insert placeholder button
+    if (stripeButton && stripeButton.parentNode) {
+        stripeButton.parentNode.insertBefore(placeholderBtn, stripeButton);
+    }
+    
+    // Check form completion
+    function checkFormCompletion() {
+        let allFilled = true;
         
-        // Clear the container
-        buttonContainer.innerHTML = '';
+        formFields.forEach(field => {
+            if (!field.value.trim()) {
+                allFilled = false;
+            }
+        });
         
-        if (!allFieldsFilled || selectedTier === '') {
-            // Show default disabled button
-            buttonContainer.innerHTML = `
-                <button type="button" class="submit-btn" style="opacity: 0.5; cursor: not-allowed;" disabled>
-                    ${allFieldsFilled ? 'Select Partner Tier to Continue' : 'Complete Form to Continue'}
-                </button>
-            `;
-        } else if (selectedTier === 'Referral Only') {
-            // Show referral application button
-            buttonContainer.innerHTML = `
-                <button type="submit" class="submit-btn" onclick="alert('Referral application submitted! We\'ll contact you within 24-48 hours.'); return false;">
-                    Submit Referral Application
-                </button>
-            `;
+        if (allFilled) {
+            // Show Stripe button, hide placeholder
+            if (stripeButton) stripeButton.style.display = 'block';
+            if (placeholderBtn) placeholderBtn.style.display = 'none';
         } else {
-            // Show Stripe button for paid tiers
-            buttonContainer.innerHTML = `
-                <stripe-buy-button
-                    buy-button-id="buy_btn_1S7LkFL7GYxhlk1SB5pHdSYz"
-                    publishable-key="pk_live_51RfjeaL7GYxhlk1SUvjfqpGx8yOcu2RtfFrqzFjBJ3tDGEoFW2i7kkUvEaDhPmID1ETtWJKOMnlIq3wLMUH4VZ8v0064yZ5oAm"
-                >
-                </stripe-buy-button>
-            `;
+            // Hide Stripe button, show placeholder
+            if (stripeButton) stripeButton.style.display = 'none';
+            if (placeholderBtn) placeholderBtn.style.display = 'block';
         }
     }
     
-    // Listen for changes
+    // Listen for changes on all form fields
     formFields.forEach(field => {
-        field.addEventListener('input', updateButtons);
-        field.addEventListener('change', updateButtons);
+        field.addEventListener('input', checkFormCompletion);
+        field.addEventListener('change', checkFormCompletion);
     });
     
     // Initial check
-    updateButtons();
+    checkFormCompletion();
+});
+</script>
+          <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tierSelect = document.querySelector('select[name="tier"]');
+    const stripeButton = document.querySelector('stripe-buy-button');
+    const referralButton = document.querySelector('.referral-btn');
+    const defaultButton = document.getElementById('defaultBtn');
+    const formFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+    
+    function updateButtonDisplay() {
+        const selectedTier = tierSelect.value;
+        const allFieldsFilled = Array.from(formFields).every(field => field.value.trim() !== '');
+        
+        // Hide all buttons first
+        if (stripeButton) stripeButton.style.display = 'none';
+        if (referralButton) referralButton.style.display = 'none';
+        if (defaultButton) defaultButton.style.display = 'none';
+        
+        if (!allFieldsFilled) {
+            // Show default disabled button if form incomplete
+            if (defaultButton) {
+                defaultButton.style.display = 'block';
+                defaultButton.textContent = 'Complete Form to Continue';
+            }
+        } else if (selectedTier === '' || selectedTier === 'Select a tier...') {
+            // Show tier selection prompt when form is complete but no tier selected
+            if (defaultButton) {
+                defaultButton.style.display = 'block';
+                defaultButton.textContent = 'Select Partner Tier to Continue';
+            }
+        } else if (selectedTier === 'referral-only') {
+            // Show referral application button
+            if (referralButton) referralButton.style.display = 'block';
+        } else {
+            // Show Stripe button for paid tiers
+            if (stripeButton) stripeButton.style.display = 'block';
+        }
+    }
+    
+    // Listen for changes on all form fields
+    formFields.forEach(field => {
+        field.addEventListener('input', updateButtonDisplay);
+        field.addEventListener('change', updateButtonDisplay);
+    });
+    
+    // Listen for tier selection changes
+    if (tierSelect) {
+        tierSelect.addEventListener('change', updateButtonDisplay);
+    }
+    
+    // Initial check
+    updateButtonDisplay();
+    
+    // Handle referral form submission
+    if (referralButton) {
+        referralButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            // You can add form submission logic here
+            alert('Referral application submitted! We\'ll contact you within 24-48 hours.');
+            // Or redirect to a different confirmation page
+            // window.location.href = '/referral-confirmation/';
+        });
+    }
 });
 </script>
 </body>
