@@ -1146,7 +1146,8 @@
               <option value="Starter">Agency Starter</option>
               <option value="Pro">Agency Pro</option>
               <option value="Elite">Agency Elite</option>
-              <option value="Referral Only (No Initial Investment)</option>
+              <option value="referral-only">Referral Only (No Initial Investment)</option>
+
             </select>
           </div>
 
@@ -1173,6 +1174,9 @@
     <button type="button" class="submit-btn" id="defaultBtn" style="opacity: 0.5; cursor: not-allowed;" disabled>
         Select Partner Tier to Continue
     </button>
+            <div id="successMessage" class="success-message">
+  <h3 style="color: var(--primary-gold); margin-bottom: 10px;">Thank You!</h3>
+  <p>We will review your application and get back with you within 24–48 hours.</p>
 </div>
 
           
@@ -1420,14 +1424,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle referral form submission
     if (referralButton) {
         referralButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            // You can add form submission logic here
-            alert('Referral application submitted! We\'ll contact you within 24-48 hours.');
-            // Or redirect to a different confirmation page
-            // window.location.href = '/referral-confirmation/';
-        });
-    }
+    e.preventDefault();
+    
+    const form = document.querySelector('.application-form');
+    const successMessage = document.getElementById('successMessage');
+
+    // Optionally hide form
+    form.style.display = 'none';
+
+    // Show success message
+    successMessage.style.display = 'block';
+    successMessage.scrollIntoView({ behavior: 'smooth' });
 });
+
 </script>
 </body>
 </html>
