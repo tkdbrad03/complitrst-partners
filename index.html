@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompliTrst™ Partner Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            background: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a4a47 0%, #2d5a57 100%);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #d4af37;
+            letter-spacing: -1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .founder-section {
+            margin: 3rem auto 2rem;
+            text-align: center;
+        }
+
+        .founder-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d4af37;
+            box-shadow: 0 8px 24px rgba(66, 150, 142, 0.3);
+            margin: 0 auto 1rem;
+            display: block;
+            background-color: #f0f0f0;
+        }
+
+        .founder-image:error {
+            content: 'Image failed to load';
+            display: block;
+            text-align: center;
+            padding: 80px 20px;
+            color: #999;
+        }
+
+        .founder-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a4a47;
+            margin-bottom: 0.3rem;
+        }
+
+        .urgency-banner {
+            background: linear-gradient(45deg, #d4af37, #42968e);
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .urgency-banner strong {
+            font-size: 1.2rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, rgba(66, 150, 142, 0.1), rgba(212, 175, 55, 0.1));
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #42968e;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .income-calculator {
+            background: white;
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calc-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a4a47;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .calc-row:last-child {
+            border-bottom: none;
+            background: linear-gradient(135deg, rgba(66, 150, 142, 0.1), rgba(212, 175, 55, 0.1));
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-section {
+            background: #f9f9f9;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #42968e;
+        }
+
+        .testimonial-role {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .timeline-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #42968e, #d4af37);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #1a4a47;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #1a4a47;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a4a47;
+            margin-bottom: 2rem;
+        }
+
+        .content-block {
+            background: #f9f9f9;
+            border-left: 4px solid #42968e;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        .content-block ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-block li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-block li:before {
+            content: "•";
+            color: #42968e;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .form-section {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            display: none;
+        }
+
+        .form-section.show {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .required {
+            color: #e53e3e;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #42968e, #d4af37);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(66, 150, 142, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 150, 142, 0.4);
+        }
+
+        .faq-section {
+            background: #f9f9f9;
+            padding: 3rem 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a4a47;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #42968e;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.7;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .faq-answer.show {
+            max-height: 2000px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .terms-section {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .terms-section h3 {
+            color: #1a4a47;
+            margin-bottom: 1rem;
+        }
+
+        .terms-section ol {
+            padding-left: 1.5rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+
+            .form-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/complitrst-logo_transparent.png" alt="CompliTrst™ Logo" class="logo">
+    </div>
+
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        🔥 <strong>Limited Opportunity:</strong> Only accepting 25 new partners this quarter • <strong>12 spots remaining</strong>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>CompliTrst™ Partner Program</h1>
+            <p>CompliTrst™ is a Florida-based compliance software platform for group homes, ALFs, and facilities regulated by APD, DCF, and AHCA.</p>
+            <p>Founded by Dr. Tasha McCray, RN, MSN-Ed, Ph.D., CompliTrst™ was created to eliminate binders, streamline documentation, and simplify audits.</p>
+            
+            <!-- Founder Section -->
+            <div class="founder-section">
+                <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/DrTMac.jpg" alt="Dr. Tasha McCray" class="founder-image">
+                <div class="founder-name">Dr. Tasha McCray</div>
+                <div class="founder-title">Founder & CEO, CompliTrst™</div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <button onclick="showApplicationForm()" class="submit-button" style="border: none;">Apply Now - Secure Your Spot</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 style="text-align: center; color: #1a4a47; margin-bottom: 2rem;">Join Florida's Fastest-Growing Partner Network</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Active Partners</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$88.80</div>
+                    <div class="stat-label">Avg. Monthly Per Referral</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3-5</div>
+                    <div class="stat-label">Referrals Per Partner (Avg)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">48hrs</div>
+                    <div class="stat-label">Approval Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Income Calculator -->
+    <section class="section">
+        <div class="container">
+            <div class="income-calculator">
+                <div class="calc-title">💰 Your Potential Monthly Income</div>
+                <div class="calc-row">
+                    <span>Refer 3 Facilities</span>
+                    <span style="color: #42968e; font-weight: 600;">$900 signup bonus</span>
+                </div>
+                <div class="calc-row">
+                    <span>Recurring Commission (3 facilities × $88.80)</span>
+                    <span style="color: #42968e; font-weight: 600;">$266.40/month</span>
+                </div>
+                <div class="calc-row">
+                    <span style="color: #1a4a47;">First Month Total Income:</span>
+                    <span style="color: #1a4a47;">$1,166.40</span>
+                </div>
+                <p style="text-align: center; color: #666; margin-top: 1rem; font-size: 0.9rem;">
+                    Plus $266.40/month every month they stay active. That's passive income.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Timeline -->
+    <section class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">How It Works - Simple 4-Step Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Apply Today</div>
+                    <div class="step-desc">Complete the quick application form</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Get Approved</div>
+                    <div class="step-desc">We review and approve within 48 hours</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Receive Your Link</div>
+                    <div class="step-desc">Get your unique referral link + toolkit</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Start Earning</div>
+                    <div class="step-desc">Share with your network & get paid</div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="container">
+            <div class="content-block">
+                <ul>
+                    <li>This Partner Program is for individuals who want to refer licensed facilities to CompliTrst™.</li>
+                    <li>You don't need to sell, train, or manage clients. Just make the connection.</li>
+                    <li>When a referred facility signs on, you earn a payout.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <ul>
+                    <li>Partner applications are open now.</li>
+                    <li>You can begin referring facilities as soon as your application is approved and your referral link is issued.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <ul>
+                    <li>Referrals must be facilities located in Florida.</li>
+                    <li>You can share your referral link by text, email, social media, or directly with a facility owner or administrator.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <ul>
+                    <li>Most facility owners don't have proper systems to stay compliant and many face fines, delays, or shutdowns.</li>
+                    <li>You likely know someone who owns or is opening a group home or ALF.</li>
+                    <li>With one introduction, you can help them stay protected and get paid for it.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Ready to Become a CompliTrst™ Partner?</h2>
+            <div class="content-block">
+                <ul>
+                    <li>Complete the short partner application form.</li>
+                    <li>Once approved, you'll receive:
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Your personal referral link</li>
+                            <li>Branded materials you can use to share it</li>
+                        </ul>
+                    </li>
+                    <li>You earn $300 for every facility that signs up, plus 20% recurring commission each month the facility remains active.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="section" id="application-form">
+        <div class="container">
+            <div class="form-section">
+                <h2 style="text-align: center; margin-bottom: 1rem; color: #1a4a47;">Apply to Become a CompliTrst™ Partner</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;">The CompliTrst Partner Program is for professionals who want to help Florida small assisted living facilities and group homes stay compliant and get paid for making referrals.</p>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;">Complete this short form to apply.</p>
+                <p style="text-align: center; color: #e53e3e; font-size: 0.9rem; margin-bottom: 3rem;">* Indicates required question</p>
+
+                <form id="partnerForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeURKuPuaPNBDzQM7CQ9KusEqrYT_6nvhPixUzBy3antec4uA/formResponse" method="POST" target="hidden_iframe">
+                    
+                    <!-- Question 1: Full Name -->
+                    <div class="form-group">
+                        <label>1. Full Name <span class="required">*</span></label>
+                        <input type="text" name="entry.2005620554" required>
+                    </div>
+
+                    <!-- Question 2: Email Address -->
+                    <div class="form-group">
+                        <label>2. Email Address <span class="required">*</span></label>
+                        <input type="email" name="entry.1045781291" required>
+                    </div>
+
+                    <!-- Question 3: Phone Number -->
+                    <div class="form-group">
+                        <label>3. Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="entry.1166974658" required>
+                    </div>
+
+                    <!-- Question 4: Company Name -->
+                    <div class="form-group">
+                        <label>4. Company Name</label>
+                        <input type="text" name="entry.1065046570">
+                    </div>
+
+                    <!-- Section Header -->
+                    <div style="margin: 3rem 0 2rem 0;">
+                        <h3 style="color: #1a4a47; font-size: 1.3rem;">Partner Interest & Network Insight</h3>
+                    </div>
+
+                    <!-- Question 5: How did you hear -->
+                    <div class="form-group">
+                        <label>5. How did you hear about the CompliTrst Partner Program? <span class="required">*</span></label>
+                        <textarea name="entry.839337160" required></textarea>
+                    </div>
+
+                    <!-- Question 6: Why interested -->
+                    <div class="form-group">
+                        <label>6. Why are you interested in becoming a CompliTrst partner? <span class="required">*</span></label>
+                        <textarea name="entry.1357633476" required></textarea>
+                    </div>
+
+                    <!-- Question 7: Primary method for connecting -->
+                    <div class="form-group">
+                        <label>7. What is your primary method for connecting with facility owners? <span class="required">*</span></label>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Select all that apply</p>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="entry.1777717502" value="In-person networking">
+                                In-person networking
+                            </label>
+                            <label>
+                                <input type="checkbox" name="entry.1777717502" value="Social media">
+                                Social media
+                            </label>
+                            <label>
+                                <input type="checkbox" name="entry.1777717502" value="Email marketing">
+                                Email marketing
+                            </label>
+                            <label>
+                                <input type="checkbox" name="entry.1777717502" value="Other">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Section Header -->
+                    <div style="margin: 3rem 0 2rem 0;">
+                        <h3 style="color: #1a4a47; font-size: 1.3rem;">Agreement & Payment</h3>
+                    </div>
+
+                    <!-- Question 8: Payment preference -->
+                    <div class="form-group">
+                        <label>8. How would you prefer to receive your payments? <span class="required">*</span></label>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Mark only one oval.</p>
+                        <div class="radio-group">
+                            <label style="display: block; margin-bottom: 0.75rem;">
+                                <input type="radio" name="entry.1404885827" value="PayPal" required>
+                                PayPal
+                            </label>
+                            <label style="display: block; margin-bottom: 0.75rem;">
+                                <input type="radio" name="entry.1404885827" value="Zelle" required>
+                                Zelle
+                            </label>
+                            <label style="display: block; margin-bottom: 0.75rem;">
+                                <input type="radio" name="entry.1404885827" value="Other" required>
+                                Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 9: If other, specify -->
+                    <div class="form-group">
+                        <label>9. If you selected other, please specify.</label>
+                        <input type="text" name="entry.1168280669">
+                    </div>
+
+                    <!-- Question 10: Payment information -->
+                    <div class="form-group">
+                        <label>10. Please provide the necessary information for your preferred payment method (e.g., PayPal email address or Zelle phone number) <span class="required">*</span></label>
+                        <input type="text" name="entry.1726203995" required>
+                    </div>
+
+                    <!-- Section Header -->
+                    <div style="margin: 3rem 0 2rem 0;">
+                        <h3 style="color: #1a4a47; font-size: 1.3rem;">Terms & Conditions</h3>
+                    </div>
+
+                    <!-- Terms & Conditions Text -->
+                    <div class="terms-section">
+                        <h3>CompliTrst™ Partner Program Terms & Conditions</h3>
+                        <p><strong>Effective Date: September 25, 2025</strong></p>
+                        <p style="margin: 1rem 0;">These Terms and Conditions ("Agreement") govern your participation in the CompliTrst™ Partner Program (the "Program") operated by CompliTrst™, Inc. ("Company," "we," or "us"). By participating in the Program, you ("Partner," "you") agree to be bound by the terms outlined below.</p>
+
+                        <h4 style="margin-top: 1.5rem;">1. Eligibility</h4>
+                        <ul>
+                            <li>You must be 18 years or older and legally allowed to work in the United States.</li>
+                            <li>You may not promote CompliTrst™ services in a deceptive or unethical manner.</li>
+                            <li>Only approved Partners may receive referral payments.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">2. Referral Process</h4>
+                        <ul>
+                            <li>You will receive a unique referral link provided by CompliTrst™.</li>
+                            <li>Referrals must sign up through your unique link to be attributed to you.</li>
+                            <li>Referrals are considered successful when the referred client becomes a paying customer.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">3. Commission & Payouts</h4>
+                        <ul>
+                            <li><strong>One-Time Bonus:</strong> $300 one-time payout for each new client who signs up and pays for the CompliTrst™ monthly subscription.</li>
+                            <li><strong>Recurring Commission:</strong> 20% of the client's monthly fee ($444), equaling $88.80/month for every month the referral remains active.</li>
+                            <li>Payments are processed monthly on or after the 1st of each month.</li>
+                            <li>Payments will be made via PayPal, Zelle, or another agreed-upon method.</li>
+                            <li>You are responsible for any tax obligations associated with your earnings.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">4. Referral Validity</h4>
+                        <ul>
+                            <li>Referrals must sign up within 90 days of clicking your link.</li>
+                            <li>Self-referrals are prohibited and will result in removal from the program.</li>
+                            <li>CompliTrst™ reserves the right to reject any referral at our sole discretion.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">5. Use of Materials</h4>
+                        <ul>
+                            <li>You may use the tools provided by CompliTrst™ (badge, flyer, templates) for promotional purposes only.</li>
+                            <li>You may not misrepresent CompliTrst™ or present yourself as an employee or agent.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">6. Code of Conduct</h4>
+                        <p>Partners are expected to:</p>
+                        <ul>
+                            <li>Represent the brand professionally.</li>
+                            <li>Avoid spam, misrepresentation, or coercive sales tactics.</li>
+                            <li>Respect facility owners' privacy and autonomy.</li>
+                            <li>Refrain from sharing non-public training materials or internal documents.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">7. Portal Access & Certification</h4>
+                        <ul>
+                            <li>All partners must complete the Partner Certification Portal.</li>
+                            <li>Completion is required before referral tracking and payouts are activated.</li>
+                            <li>Portal materials are confidential and intended for partner use only.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">8. Termination</h4>
+                        <ul>
+                            <li>You may leave the program at any time by emailing: <a href="mailto:partners@complitrst.com">partners@complitrst.com</a>.</li>
+                            <li>CompliTrst™ may suspend or terminate your participation at any time for violation of this agreement or conduct deemed harmful to the brand.</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">9. Modifications</h4>
+                        <p>We reserve the right to update or change these Terms at any time. Changes will be communicated via email and/or partner portal announcements. Continued participation constitutes acceptance.</p>
+
+                        <h4 style="margin-top: 1.5rem;">10. Limitation of Liability</h4>
+                        <p>CompliTrst™ is not responsible for lost earnings due to platform outages, user error, or technical issues. CompliTrst™ makes no guarantees regarding potential earnings.</p>
+
+                        <h4 style="margin-top: 1.5rem;">11. Governing Law</h4>
+                        <p>This Agreement shall be governed by the laws of the State of Florida.</p>
+
+                        <h4 style="margin-top: 1.5rem;">Questions?</h4>
+                        <p>Please contact us anytime at <a href="mailto:partners@complitrst.com">partners@complitrst.com</a></p>
+                    </div>
+
+                    <!-- Question 11: Terms agreement -->
+                    <div class="form-group">
+                        <label>11. I have read and agree to the CompliTrst™ Partner Program Terms & Conditions. <span class="required">*</span></label>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Check all that apply</p>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="entry.1150941147" value="I agree" required>
+                                I agree
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button type="submit" class="submit-button">Submit Application</button>
+                    </div>
+                </form>
+
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                
+                <div id="success" style="display:none; text-align: center; padding: 2rem; background: #e6f7f5; border-radius: 8px; margin-top: 2rem;">
+                    <h3 style="color: #42968e; margin-bottom: 1rem;">Application Submitted Successfully!</h3>
+                    <p style="color: #666;">Thank you for applying to become a CompliTrst™ Partner. We'll review your application and get back to you soon.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions (FAQ)</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need to train or onboard the facility after I refer them?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">No. Your only role is to refer the facility. We handle all demos, onboarding, and support directly with the client.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much do I earn for each referral?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">You earn a <strong>$300 referral bonus</strong> for every facility that signs up through your link, plus <strong>20% monthly recurring commission</strong> for as long as they remain an active subscriber.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is there a limit to how many facilities I can refer?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">No. There's no cap. You can refer as many facilities as you want.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Who can I refer?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">You can refer any licensed or soon-to-be-licensed facility in Florida that operates under APD, DCF, or AHCA — including group homes, ALFs, and residential programs.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I track my referrals and payouts?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Once you're approved, you'll receive a unique referral link.</p>
+                    <p>We use this link to privately track all activity connected to your referrals. You'll receive a monthly report showing:</p>
+                    <ul>
+                        <li>How many people clicked your link</li>
+                        <li>How many completed the application</li>
+                        <li>How many became paying clients</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;">Referral activity is tracked for 90 days from the first click, giving you credit even if someone signs up later. No login is required — your report comes directly to your email.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I get paid?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Referral bonuses and monthly commissions are processed after the referred facility completes onboarding and payment.</p>
+                    <p style="margin-top: 0.5rem;">Here's how it works:</p>
+                    <ul>
+                        <li><strong>Referral Reports Sent:</strong> 1st of each month</li>
+                        <li><strong>Payouts Processed:</strong> By the 5th of each month</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;">You'll be paid via the method you selected during onboarding, and you'll receive a detailed breakdown of each referral and payout amount.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need to live in Florida to become a partner?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">No. You just need to know or be connected to facility owners in Florida.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is this an affiliate program?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">No. This is a direct partner referral opportunity — not a public affiliate program. All partners are approved individually.</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Show application form
+        function showApplicationForm() {
+            const formSection = document.querySelector('.form-section');
+            formSection.classList.add('show');
+            
+            // Smooth scroll to form
+            setTimeout(function() {
+                document.getElementById('application-form').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+
+        // Smooth scroll to form (for any other links)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Show form if link points to application
+                    if (this.getAttribute('href') === '#application-form') {
+                        document.querySelector('.form-section').classList.add('show');
+                    }
+                    setTimeout(function() {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
+                }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
+                const isOpen = answer.classList.contains('show');
+                
+                // Close all FAQs
+                document.querySelectorAll('.faq-answer').forEach(function(a) {
+                    a.classList.remove('show');
+                });
+                document.querySelectorAll('.faq-icon').forEach(function(i) {
+                    i.textContent = '+';
+                });
+                
+                // Open clicked FAQ if it was closed
+                if (!isOpen) {
+                    answer.classList.add('show');
+                    icon.textContent = '−';
+                }
+            });
+        });
+
+        // Form submission
+        var submitted = false;
+        document.getElementById('partnerForm').addEventListener('submit', function() {
+            submitted = true;
+        });
+        
+        window.addEventListener('load', function() {
+            document.getElementById('hidden_iframe').addEventListener('load', function() {
+                if (submitted) {
+                    document.getElementById('partnerForm').style.display = 'none';
+                    document.getElementById('success').style.display = 'block';
+                    window.scrollTo(0, document.getElementById('success').offsetTop - 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
