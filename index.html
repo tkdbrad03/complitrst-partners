@@ -1059,7 +1059,7 @@ document.querySelectorAll('.faq-question').forEach(function(question) {
     });
 });
 
-// Form submission - URL PARAMETER METHOD
+// Form submission - COMPLETE ALL FIELDS METHOD
 var form = document.getElementById('partnerForm');
 if (form) {
     form.addEventListener('submit', function(e) {
@@ -1069,49 +1069,50 @@ if (form) {
         button.disabled = true;
         button.textContent = 'Submitting...';
         
-        // Build the URL with all parameters
-        var baseUrl = this.action;
+        // Build complete form data
+        var formData = new FormData(this);
         var params = [];
         
-        // Get all form inputs
-        var inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
-        inputs.forEach(function(input) {
-            if (input.value && input.name) {
-                params.push(encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value));
+        // Collect ALL form data entries
+        for (var pair of formData.entries()) {
+            if (pair[1]) { // Only add if value exists
+                params.push(encodeURIComponent(pair[0]) + '=' + encodeURIComponent(pair[1]));
             }
-        });
+        }
         
-        // Get all checked checkboxes
-        var checkboxes = this.querySelectorAll('input[type="checkbox"]:checked');
-        checkboxes.forEach(function(cb) {
-            if (cb.name && cb.value) {
-                params.push(encodeURIComponent(cb.name) + '=' + encodeURIComponent(cb.value));
-            }
-        });
+        // Build complete URL
+        var submitUrl = this.action + '?' + params.join('&');
         
-        // Get selected radio button
-        var radios = this.querySelectorAll('input[type="radio"]:checked');
-        radios.forEach(function(radio) {
-            if (radio.name && radio.value) {
-                params.push(encodeURIComponent(radio.name) + '=' + encodeURIComponent(radio.value));
-            }
-        });
+        // Use iframe method for submission
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.name = 'submit_frame';
+        document.body.appendChild(iframe);
         
-        // Create full URL and submit
-        var fullUrl = baseUrl + '?' + params.join('&');
+        // Create temporary form
+        var tempForm = document.createElement('form');
+        tempForm.target = 'submit_frame';
+        tempForm.method = 'POST';
+        tempForm.action = this.action;
         
-        // Submit using image trick (silent submission)
-        var img = document.createElement('img');
-        img.src = fullUrl;
-        img.style.display = 'none';
-        document.body.appendChild(img);
+        // Add all fields to temp form
+        for (var pair of formData.entries()) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = pair[0];
+            input.value = pair[1];
+            tempForm.appendChild(input);
+        }
         
-        // Show success message
+        document.body.appendChild(tempForm);
+        tempForm.submit();
+        
+        // Show success message after delay
         setTimeout(function() {
             form.style.display = 'none';
             document.getElementById('success').style.display = 'block';
             window.scrollTo(0, document.getElementById('success').offsetTop - 100);
-        }, 1500);
+        }, 2000);
     });
 }
     </script>
