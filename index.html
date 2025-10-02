@@ -1006,93 +1006,83 @@
     </section>
 
     <script>
-        // Show application form
-        function showApplicationForm() {
-            const formSection = document.querySelector('.form-section');
-            formSection.classList.add('show');
-            
-            // Smooth scroll to form
+     // Show application form
+function showApplicationForm() {
+    const formSection = document.querySelector('.form-section');
+    formSection.classList.add('show');
+    
+    setTimeout(function() {
+        document.getElementById('application-form').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }, 100);
+}
+
+// Smooth scroll to form
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            if (this.getAttribute('href') === '#application-form') {
+                document.querySelector('.form-section').classList.add('show');
+            }
             setTimeout(function() {
-                document.getElementById('application-form').scrollIntoView({
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             }, 100);
         }
-
-        // Smooth scroll to form (for any other links)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // Show form if link points to application
-                    if (this.getAttribute('href') === '#application-form') {
-                        document.querySelector('.form-section').classList.add('show');
-                    }
-                    setTimeout(function() {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }, 100);
-                }
-            });
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(function(question) {
-            question.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const icon = this.querySelector('.faq-icon');
-                const isOpen = answer.classList.contains('show');
-                
-                // Close all FAQs
-                document.querySelectorAll('.faq-answer').forEach(function(a) {
-                    a.classList.remove('show');
-                });
-                document.querySelectorAll('.faq-icon').forEach(function(i) {
-                    i.textContent = '+';
-                });
-                
-                // Open clicked FAQ if it was closed
-                if (!isOpen) {
-                    answer.classList.add('show');
-                    icon.textContent = '−';
-                }
-            });
-        });
-
-        // Form submission
-// Form submission with Ajax
-document.getElementById('partnerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    var formData = new FormData(this);
-    var submitButton = this.querySelector('button[type="submit"]');
-    
-    // Disable button and show loading state
-    submitButton.disabled = true;
-    submitButton.textContent = 'Submitting...';
-    submitButton.style.opacity = '0.6';
-    
-    // Submit via fetch
-    fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
     });
-    
-    // Show success message after 2 seconds (gives time for submission)
-    setTimeout(function() {
-        document.getElementById('partnerForm').style.display = 'none';
-        document.getElementById('success').style.display = 'block';
-        window.scrollTo({
-            top: document.getElementById('success').offsetTop - 100,
-            behavior: 'smooth'
-        });
-    }, 2000);
 });
+
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(function(question) {
+    question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('.faq-icon');
+        const isOpen = answer.classList.contains('show');
+        
+        document.querySelectorAll('.faq-answer').forEach(function(a) {
+            a.classList.remove('show');
+        });
+        document.querySelectorAll('.faq-icon').forEach(function(i) {
+            i.textContent = '+';
+        });
+        
+        if (!isOpen) {
+            answer.classList.add('show');
+            icon.textContent = '−';
+        }
+    });
+});
+
+// Form submission - SIMPLIFIED VERSION
+var form = document.getElementById('partnerForm');
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var button = this.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = 'Submitting...';
+        
+        // Submit the form data
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', this.action, true);
+        xhr.send(formData);
+        
+        // Wait 1.5 seconds then show success
+        setTimeout(function() {
+            form.style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            window.scrollTo(0, document.getElementById('success').offsetTop - 100);
+        }, 1500);
+    });
+}
     </script>
 </body>
 </html>
