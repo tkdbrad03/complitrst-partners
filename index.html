@@ -1064,25 +1064,34 @@
         });
 
         // Form submission
-        // New Ajax method - works reliably
+// Form submission with Ajax
 document.getElementById('partnerForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     var formData = new FormData(this);
     var submitButton = this.querySelector('button[type="submit"]');
     
+    // Disable button and show loading state
     submitButton.disabled = true;
     submitButton.textContent = 'Submitting...';
+    submitButton.style.opacity = '0.6';
     
+    // Submit via fetch
     fetch(this.action, {
         method: 'POST',
         body: formData,
         mode: 'no-cors'
-    }).then(function() {
-        // Show success
-    }).catch(function() {
-        // Show success (works even on CORS error)
     });
+    
+    // Show success message after 2 seconds (gives time for submission)
+    setTimeout(function() {
+        document.getElementById('partnerForm').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+        window.scrollTo({
+            top: document.getElementById('success').offsetTop - 100,
+            behavior: 'smooth'
+        });
+    }, 2000);
 });
     </script>
 </body>
