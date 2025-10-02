@@ -890,16 +890,16 @@
                 </div>
 
                 <!-- Question 11: Terms agreement -->
-                <div class="form-group">
-                    <label>11. I have read and agree to the CompliTrst™ Partner Program Terms & Conditions. <span class="required">*</span></label>
-                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Check to confirm</p>
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" name="entry.1003817501" value="I agree" required>
-                            I agree
-                        </label>
-                    </div>
-                </div>
+                <<div class="field-group flex items-center mb-6">
+    <!-- VISIBLE UI ELEMENT (A CHECKBOX) -->
+    <input type="checkbox" id="user_agreement_check" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 mr-2">
+    <label for="user_agreement_check" class="text-sm font-medium text-gray-700 select-none">
+        I have read and agree to the CompliTrst™ Partner Program Terms & Conditions.
+    </label>
+    
+    <!-- HIDDEN INPUT FIELD (Sends the data to Google Form) -->
+    <input type="hidden" name="entry.1003817501" id="hidden_agreement_input" value="" required>
+</div>
 
                 <!-- Submit Button -->
                 <div style="text-align: center; margin-top: 3rem;">
@@ -1006,7 +1006,30 @@
     </section>
 
     <script>
-     // Show application form
+     // Get the visible checkbox and the hidden input field
+    const visibleCheckbox = document.getElementById('user_agreement_check');
+    const hiddenInput = document.getElementById('hidden_agreement_input');
+
+    // Add an event listener to update the hidden field whenever the checkbox changes
+    visibleCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            // When checked, set the hidden field value to the exact text 
+            // of your new Multiple Choice option.
+            hiddenInput.value = "I agree";
+            // Important: Remove the 'required' attribute to prevent double validation
+            hiddenInput.removeAttribute('required'); 
+        } else {
+            // If unchecked, clear the value and add 'required' to prevent submission
+            hiddenInput.value = "";
+            hiddenInput.setAttribute('required', 'required');
+        }
+    });
+    
+    // Initial check (ensure the hidden field starts empty or with the required validation)
+    if (!visibleCheckbox.checked) {
+        hiddenInput.setAttribute('required', 'required');
+    }
+        // Show application form
 function showApplicationForm() {
     const formSection = document.querySelector('.form-section');
     formSection.classList.add('show');
