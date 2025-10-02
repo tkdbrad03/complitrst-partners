@@ -1059,23 +1059,59 @@ document.querySelectorAll('.faq-question').forEach(function(question) {
     });
 });
 
-// Form submission - NATIVE SUBMISSION METHOD
+// Form submission - URL PARAMETER METHOD
 var form = document.getElementById('partnerForm');
 if (form) {
     form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
         var button = this.querySelector('button[type="submit"]');
         button.disabled = true;
         button.textContent = 'Submitting...';
         
-        // Let the form submit naturally to the hidden iframe
-        // Don't prevent default - let it submit normally
+        // Build the URL with all parameters
+        var baseUrl = this.action;
+        var params = [];
         
-        // After 2 seconds, show success message
+        // Get all form inputs
+        var inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+        inputs.forEach(function(input) {
+            if (input.value && input.name) {
+                params.push(encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value));
+            }
+        });
+        
+        // Get all checked checkboxes
+        var checkboxes = this.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxes.forEach(function(cb) {
+            if (cb.name && cb.value) {
+                params.push(encodeURIComponent(cb.name) + '=' + encodeURIComponent(cb.value));
+            }
+        });
+        
+        // Get selected radio button
+        var radios = this.querySelectorAll('input[type="radio"]:checked');
+        radios.forEach(function(radio) {
+            if (radio.name && radio.value) {
+                params.push(encodeURIComponent(radio.name) + '=' + encodeURIComponent(radio.value));
+            }
+        });
+        
+        // Create full URL and submit
+        var fullUrl = baseUrl + '?' + params.join('&');
+        
+        // Submit using image trick (silent submission)
+        var img = document.createElement('img');
+        img.src = fullUrl;
+        img.style.display = 'none';
+        document.body.appendChild(img);
+        
+        // Show success message
         setTimeout(function() {
             form.style.display = 'none';
             document.getElementById('success').style.display = 'block';
             window.scrollTo(0, document.getElementById('success').offsetTop - 100);
-        }, 2000);
+        }, 1500);
     });
 }
     </script>
