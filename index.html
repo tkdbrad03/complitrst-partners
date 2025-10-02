@@ -3,1037 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CompliTrst™ Partner Program</title>
+    <title>CompliTrst™ Partner Program Application</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            background: #ffffff;
-            color: #333333;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
         }
-
-        .header {
-            background: linear-gradient(135deg, #1a4a47 0%, #2d5a57 100%);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .logo {
-            width: 300px;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-        }
-
-        .brand-name {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #d4af37;
-            letter-spacing: -1px;
-        }
-
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
-
-        .founder-section {
-            margin: 3rem auto 2rem;
-            text-align: center;
+        .header-bg {
+            background-color: #0d47a1; /* Darker blue */
         }
-
-        .founder-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #d4af37;
-            box-shadow: 0 8px 24px rgba(66, 150, 142, 0.3);
-            margin: 0 auto 1rem;
-            display: block;
-            background-color: #f0f0f0;
+        .btn-primary {
+            background-color: #1e88e5; /* Standard blue */
+            transition: background-color 0.3s;
         }
-
-        .founder-image:error {
-            content: 'Image failed to load';
-            display: block;
-            text-align: center;
-            padding: 80px 20px;
-            color: #999;
+        .btn-primary:hover {
+            background-color: #0b5993;
         }
-
-        .founder-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1a4a47;
-            margin-bottom: 0.3rem;
-        }
-
-        .urgency-banner {
-            background: linear-gradient(45deg, #d4af37, #42968e);
-            color: white;
-            text-align: center;
-            padding: 1rem 2rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .urgency-banner strong {
-            font-size: 1.2rem;
-        }
-
-        .stats-section {
-            background: linear-gradient(135deg, rgba(66, 150, 142, 0.1), rgba(212, 175, 55, 0.1));
-            padding: 3rem 0;
-            margin: 3rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #42968e;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .income-calculator {
-            background: white;
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 3rem 0;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .calc-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1a4a47;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .calc-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .calc-row:last-child {
-            border-bottom: none;
-            background: linear-gradient(135deg, rgba(66, 150, 142, 0.1), rgba(212, 175, 55, 0.1));
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-section {
-            background: #f9f9f9;
-            padding: 3rem 0;
-            margin: 3rem 0;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .testimonial-quote {
-            font-style: italic;
-            color: #333;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: #42968e;
-        }
-
-        .testimonial-role {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        .process-timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .timeline-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #42968e, #d4af37);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1rem;
-        }
-
-        .step-title {
-            font-weight: 600;
-            color: #1a4a47;
-            margin-bottom: 0.5rem;
-        }
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            color: #1a4a47;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1a4a47;
-            margin-bottom: 2rem;
-        }
-
-        .content-block {
-            background: #f9f9f9;
-            border-left: 4px solid #42968e;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-
-        .content-block ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .content-block li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .content-block li:before {
-            content: "•";
-            color: #42968e;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
         .form-section {
-            background: #ffffff;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            margin: 3rem 0;
-            display: none;
+            display: none; /* Initially hide the form section */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
-
         .form-section.show {
             display: block;
+            opacity: 1;
         }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .required {
-            color: #e53e3e;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d0d0d0;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .checkbox-group {
-            margin: 0.5rem 0;
-        }
-
-        .checkbox-group label {
-            display: flex;
-            align-items: center;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-
-        .checkbox-group input[type="checkbox"],
-        .radio-group input[type="radio"] {
-            margin-right: 0.5rem;
-        }
-
-        .submit-button {
-            background: linear-gradient(45deg, #42968e, #d4af37);
-            color: white;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(66, 150, 142, 0.3);
-        }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(66, 150, 142, 0.4);
-        }
-
-        .faq-section {
-            background: #f9f9f9;
-            padding: 3rem 0;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a4a47;
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-            user-select: none;
-        }
-
-        .faq-question:hover {
-            background-color: #f5f5f5;
-        }
-
-        .faq-icon {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #42968e;
-            min-width: 30px;
-            text-align: center;
-        }
-
         .faq-answer {
-            color: #666;
-            line-height: 1.7;
-            padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1.5rem;
         }
-
         .faq-answer.show {
-            max-height: 2000px;
-            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 500px; /* Adjust height based on content */
+            padding: 1rem 1.5rem;
         }
-
-        .faq-answer ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .terms-section {
-            background: #f5f5f5;
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            max-height: 400px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-        }
-
-        .terms-section h3 {
-            color: #1a4a47;
-            margin-bottom: 1rem;
-        }
-
-        .terms-section ol {
-            padding-left: 1.5rem;
-        }
-
-        .terms-section li {
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .section {
-                padding: 2rem 0;
-            }
-
-            .form-section {
-                padding: 2rem 1rem;
-            }
+        #success {
+            display: none;
+            padding: 3rem;
+            background-color: #e8f5e9;
+            border: 2px solid #4caf50;
+            color: #1b5e20;
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <div class="header">
-        <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/complitrst-logo_transparent.png" alt="CompliTrst™ Logo" class="logo">
-    </div>
+<body class="antialiased">
 
-    <!-- Urgency Banner -->
-    <div class="urgency-banner">
-        <strong>Limited Opportunity:</strong> Only accepting 25 new partners this quarter • <strong>12 spots remaining</strong>
-    </div>
+    <!-- Header / Hero Section -->
+    <header class="header-bg text-white py-16 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">CompliTrst™ Partner Program</h1>
+            <p class="text-xl sm:text-2xl mb-8 font-light">Join our network and empower businesses with seamless compliance.</p>
+            <a href="#application-form" class="btn-primary text-white font-bold py-3 px-8 rounded-full shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-105" id="apply-now-btn">
+                Apply Now
+            </a>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>CompliTrst™ Partner Program</h1>
-            <p>CompliTrst™ was built to eliminate binders, organize every file in one place, and simplify audits — giving Florida facilities a clear, affordable way to stay inspection-ready and fully compliant.</p>
-        
+    <!-- Value Proposition Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Why Partner with CompliTrst™?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Card 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md transition duration-300 hover:shadow-lg">
+                    <svg class="w-12 h-12 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.69C17.176 19.29 21 14.591 21 9c0-1.85-.357-3.6-1.03-5.184z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Exclusive Tools</h3>
+                    <p class="text-gray-600">Gain access to proprietary compliance platforms and resources.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md transition duration-300 hover:shadow-lg">
+                    <svg class="w-12 h-12 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">High Commission</h3>
+                    <p class="text-gray-600">Benefit from a generous commission structure on every successful referral.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md transition duration-300 hover:shadow-lg">
+                    <svg class="w-12 h-12 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.477 3-9s-1.343-9-3-9m0 18v-8m0 0v-2"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Global Impact</h3>
+                    <p class="text-gray-600">Help clients worldwide navigate complex regulatory landscapes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="application-form" class="py-16 bg-gray-100 min-h-screen">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Partner Program Application</h2>
             
-            <!-- Founder Section -->
-            <div class="founder-section">
-                <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/DrTMac.jpg" alt="Dr. Tasha McCray" class="founder-image">
-                <div class="founder-name">Dr. Tasha McCray, RN, MSN-Ed, Ph.D., </div>
-                <div class="founder-title">Founder & CEO, CompliTrst™</div>
-                <div class="founder-quote">Trusted by Florida providers who are ready to ditch paper and stay audit-ready, without the overwhelm.</div>
+            <!-- Success Message (Initially Hidden) -->
+            <div id="success" class="text-center rounded-xl shadow-xl mx-auto max-w-lg">
+                <h3 class="text-2xl font-bold mb-4 text-green-700">Application Submitted Successfully!</h3>
+                <p>Thank you for your interest in the CompliTrst™ Partner Program. We will review your application and be in touch soon.</p>
             </div>
-            
-            <div style="margin-top: 2rem; text-align: center;">
-                <button onclick="showApplicationForm()" class="submit-button" style="border: none;">Apply Now</button>
-            </div>
-        </div>
-    </section>
 
-    <!-- Social Proof Stats -->
-    <section class="stats-section">
-        <div class="container">
-            <h2 style="text-align: center; color: #1a4a47; margin-bottom: 2rem;">Join Florida's Fastest-Growing Partner Network</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">25+</div>
-                    <div class="stat-label">Active Partners</div>
-                </div>
-            
-                <div class="stat-card">
-                    <div class="stat-number">3-5</div>
-                    <div class="stat-label">Referrals Per Partner (Avg)</div>
-                </div>
+            <!-- Form Container -->
+            <div class="form-section mx-auto max-w-lg bg-white p-8 rounded-xl shadow-2xl">
+                <form id="partnerForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeURKuPuaPNBDzQM7CQ9KusEqtYT_6nvhPixUzBy3antec4uA/formResponse" method="POST">
+                    
+                    <div class="field-group mb-6">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" name="entry.1207865243" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
 
-                <div class="stat-card">
-                    <div class="stat-number">$1,500+</div>
-                    <div class="stat-label">Average Partner Payout</div>
-                </div>
-                
-                </div>
-            </div>
-        </div>
-    </section>
-        <!-- Market Opportunity Section - ADD THIS RIGHT AFTER THE CREDIBILITY SECTION (after the div with class="credibility") -->
-<div style="background: linear-gradient(135deg, #ffd700 0%,#d4af37 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 3px solid #027361; box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);">
-    <div style="text-align: center; margin-bottom: 20px;">
-        <div style="background: white; display: inline-block; padding: 10px 25px; border-radius: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.15);">
-            <span style="font-size: 0.9em; color: #027361; font-weight: 600;">PARTNER EARNING POTENTIAL</span>
-        </div>
-    </div>
-    
-    <h3 style="font-size: 1.8em; color: #027361; text-align: center; margin-bottom: 20px; font-weight: 700;">The Florida Market Opportunity</h3>
-    
-    <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;">
-            <div style="min-width: 140px;">
-                <div style="font-size: 2.5em; font-weight: 700; color: #027361; line-height: 1;">3,080+</div>
-                <div style="font-size: 0.95em; color: #495057; margin-top: 5px;">Licensed ALFs<br>in Florida</div>
-            </div>
-            <div style="min-width: 140px;">
-                <div style="font-size: 2.5em; font-weight: 700; color: #027361; line-height: 1;">1,187+</div>
-                <div style="font-size: 0.95em; color: #495057; margin-top: 5px;">Group Homes<br>Statewide</div>
-            </div>
-            <div style="min-width: 140px;">
-                <div style="font-size: 2.5em; font-weight: 700; color: #d4af37; line-height: 1;">$$$</div>
-                <div style="font-size: 0.95em; color: #495057; margin-top: 5px;">Recurring Monthly<br>Commissions</div>
-            </div>
-        </div>
-    </div>
-    
-    <div style="background: rgba(2, 115, 97, 0.1); padding: 20px; border-radius: 8px; border-left: 4px solid #027361;">
-        <p style="font-size: 1.1em; color: #333; margin: 0; text-align: center;">
-            <strong style="color: #027361;">Your Opportunity:</strong> Even referring just <strong style="color: #027361;">10-20 facilities</strong> creates substantial recurring income while helping facilities stay compliant and avoid costly fines.
-        </p>
-    </div>
-</div>
+                    <div class="field-group mb-6">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Work Email</label>
+                        <input type="email" name="entry.100032993" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
 
-    <!-- Income Calculator -->
-    <section class="section">
-        <div class="container">
-            <div class="income-calculator">
-                <div class="calc-title">Your Potential Monthly Income</div>
-                <div class="calc-row">
-                    <span>Refer 5 Facilities</span>
-                    <span style="color: #42968e; font-weight: 600;">$1,500 signup bonus</span>
-                </div>
-                <div class="calc-row">
-                    <span>Recurring Commission (5 facilities × $88.80)</span>
-                    <span style="color: #42968e; font-weight: 600;">$444/month</span>
-                </div>
-                <div class="calc-row">
-                    <span style="color: #1a4a47;">First Month Total Income:</span>
-                    <span style="color: #1a4a47;">$1,944</span>
-                </div>
-                <p style="text-align: center; color: #666; margin-top: 1rem; font-size: 0.9rem;">
-                    Plus $444/month every month they stay active. That's passive income.
-                </p>
+                    <div class="field-group mb-6">
+                        <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company/Organization Name</label>
+                        <input type="text" name="entry.2064956799" id="company" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="field-group mb-6">
+                        <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Your Role/Title</label>
+                        <input type="text" name="entry.202573229" id="role" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <div class="field-group mb-6">
+                        <label for="reason" class="block text-sm font-medium text-gray-700 mb-1">Why are you interested in partnering?</label>
+                        <textarea name="entry.1706240228" id="reason" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- FIXED AGREEMENT FIELD HTML -->
+                    <div class="field-group mb-6">
+                        <div class="flex items-center">
+                            <!-- VISIBLE UI ELEMENT: The checkbox the user clicks -->
+                            <input type="checkbox" id="user_agreement_check" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 mr-2">
+                            <label for="user_agreement_check" class="text-sm font-medium text-gray-700 select-none">
+                                I have read and agree to the CompliTrst™ Partner Program Terms & Conditions.
+                            </label>
+                        </div>
+                        
+                        <!-- HIDDEN INPUT FIELD: This sends the value to the Google Form -->
+                        <!-- name="entry.1003817501" is the ID for the agreement question -->
+                        <input type="hidden" name="entry.1003817501" id="hidden_agreement_input" value="" required>
+                    </div>
+                    <!-- END FIXED AGREEMENT FIELD HTML -->
+
+
+                    <button type="submit" class="btn-primary w-full text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        Submit Application
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Timeline -->
-    <section class="section" style="background: #f9f9f9;">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">How It Works - Simple 4-Step Process</h2>
-            <div class="process-timeline">
-                <div class="timeline-step">
-                    <div class="step-number">1</div>
-                    <div class="step-title">Apply Today</div>
-                    <div class="step-desc">Complete the quick application form</div>
-                </div>
-                <div class="timeline-step">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Get Approved</div>
-                    <div class="step-desc">We review and approve within 48 hours</div>
-                </div>
-                <div class="timeline-step">
-                    <div class="step-number">3</div>
-                    <div class="step-title">Receive Your Link</div>
-                    <div class="step-desc">Get your unique referral link</div>
-                </div>
-                <div class="timeline-step">
-                    <div class="step-number">4</div>
-                    <div class="step-title">Start Earning</div>
-                    <div class="step-desc">Share with your network & get paid</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section style="padding: 4rem 1rem; background: linear-gradient(to right, #e9f3f2, #f9f9f9);">
-  <div style="text-align: center; margin-bottom: 2rem;">
-    <h2 style="color: #1c3d36; font-size: 2rem; margin-bottom: 0.5rem;">What Our Partners Are Saying</h2>
-    <p style="font-size: 1rem; color: #444;">Real stories from professionals just like you who are helping facilities stay compliant and getting paid to do it.</p>
-  </div>
-
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px; margin: 0 auto;">
-
-    <!-- Testimonial 1 -->
-    <div class="testimonial-container" style="max-width: 350px; text-align: center;">
-      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/nurse.png" alt="Kim L." style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <p style="margin-top: 1rem; font-style: italic;">
-        “I have referred at least 4 group homes to CompliTrst in the last 2 weeks. I love being a partner.
-        Thank you, Ms. Tasha, for the opportunity to help facilities be compliant.”
-      </p>
-      <p style="font-weight: bold; color: #1c3d36;">Kim L., LPN</p>
-    </div>
-
-    <!-- Testimonial 2 -->
-    <div class="testimonial-container" style="max-width: 350px; text-align: center;">
-      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/cna.png" alt="Sarah B." style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <p style="margin-top: 1rem; font-style: italic;">
-        “I have a lot of friends in the healthcare field that own residential ALFs and I had no idea
-        that they were drowning in binders and paperwork until I mentioned CompliTrst.
-        This is so easy. I just give them my link and get paid.”
-      </p>
-      <p style="font-weight: bold; color: #1c3d36;">Sarah B., CNA</p>
-    </div>
-
-    <!-- Testimonial 3 -->
-    <div class="testimonial-container" style="max-width: 350px; text-align: center;">
-      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/consultant.png" alt="David S." style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <p style="margin-top: 1rem; font-style: italic;">
-        “I wished that I had this software when I owned my group homes back in the day.
-        Life sure would have been much easier. But, I am happy to share CompliTrst with my clients.”
-      </p>
-      <p style="font-weight: bold; color: #1c3d36;">David S., Healthcare Consultant</p>
-    </div>
-
-  </div>
-</section>
- <div style="margin-top: 2rem; text-align: center;">
-                <button onclick="showApplicationForm()" class="submit-button" style="border: none;">Apply Now</button>
-            </div>
-        </div>
-        <div class="container">
-            <div class="content-block">
-                <ul>
-                    <li>This Partner Program is for individuals who want to refer licensed facilities to CompliTrst™.</li>
-                    <li>You don't need to sell, train, or manage clients. Just make the connection.</li>
-                    <li>When a referred facility signs on, you earn a payout.</li>
-                </ul>
-            </div>
-
-            <div class="content-block">
-                <ul>
-                    <li>Partner applications are open now.</li>
-                    <li>You can begin referring facilities as soon as your application is approved and your referral link is issued.</li>
-                </ul>
-            </div>
-
-            <div class="content-block">
-                <ul>
-                    <li>Referrals must be facilities located in Florida.</li>
-                    <li>You can share your referral link by text, email, social media, or directly with a facility owner or administrator.</li>
-                </ul>
-            </div>
-
-            <div class="content-block">
-                <ul>
-                    <li>Most facility owners don't have proper systems to stay compliant and many face fines, delays, or shutdowns.</li>
-                    <li>You likely know someone who owns or is opening a group home or ALF.</li>
-                    <li>With one introduction, you can help them stay protected and get paid for it.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="section" style="background: #f9f9f9;">
-        <div class="container">
-            <h2 class="section-title">Ready to Become a CompliTrst™ Partner?</h2>
-            <div class="content-block">
-                <ul>
-                    <li>Complete the short partner application form.</li>
-                    <li>Once approved, you'll receive:
-                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                            <li>Your personal referral link</li>
-                            <li>Branded materials you can use to share it</li>
-                        </ul>
-                    </li>
-                    <li>You earn $300 for every facility that signs up, plus 20% recurring commission each month the facility remains active.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Application Form Section - CORRECTED VERSION -->
-<section class="section" id="application-form">
-    <div class="container">
-        <div class="form-section">
-            <h2 style="text-align: center; margin-bottom: 1rem; color: #1a4a47;">Apply to Become a CompliTrst™ Partner</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">The CompliTrst Partner Program is for professionals who want to help Florida small assisted living facilities and group homes stay compliant and get paid for making referrals.</p>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Complete this short form to apply.</p>
-            <p style="text-align: center; color: #e53e3e; font-size: 0.9rem; margin-bottom: 3rem;">* Indicates required question</p>
-
-            <form id="partnerForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeURKuPuaPNBDzQM7CQ9KusEqrYT_6nvhPixUzBy3antec4uA/formResponse" method="POST" target="hidden_iframe">
-                
-                <!-- Question 1: Full Name -->
-                <div class="form-group">
-                    <label>1. Full Name <span class="required">*</span></label>
-                    <input type="text" name="entry.425641109" required>
-                </div>
-
-                <!-- Question 2: Email Address -->
-                <div class="form-group">
-                    <label>2. Email Address <span class="required">*</span></label>
-                    <input type="email" name="entry.1687884008" required>
-                </div>
-
-                <!-- Question 3: Phone Number -->
-                <div class="form-group">
-                    <label>3. Phone Number <span class="required">*</span></label>
-                    <input type="tel" name="entry.2001075921" required>
-                </div>
-
-                <!-- Question 4: Company Name -->
-                <div class="form-group">
-                    <label>4. Company Name</label>
-                    <input type="text" name="entry.1097863625">
-                </div>
-
-                <!-- Section Header -->
-                <div style="margin: 3rem 0 2rem 0;">
-                    <h3 style="color: #1a4a47; font-size: 1.3rem;">Partner Interest & Network Insight</h3>
-                </div>
-
-                <!-- Question 5: How did you hear -->
-                <div class="form-group">
-                    <label>5. How did you hear about the CompliTrst Partner Program? <span class="required">*</span></label>
-                    <textarea name="entry.146818230" required></textarea>
-                </div>
-
-                <!-- Question 6: Why interested -->
-                <div class="form-group">
-                    <label>6. Why are you interested in becoming a CompliTrst partner? <span class="required">*</span></label>
-                    <textarea name="entry.256800140" required></textarea>
-                </div>
-
-                <!-- Question 7: Primary method for connecting -->
-                <div class="form-group">
-                    <label>7. What is your primary method for connecting with facility owners? <span class="required">*</span></label>
-                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Select all that apply</p>
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" name="entry.855004592" value="In-person networking">
-                            In-person networking
-                        </label>
-                        <label>
-                            <input type="checkbox" name="entry.855004592" value="Social media">
-                            Social media
-                        </label>
-                        <label>
-                            <input type="checkbox" name="entry.855004592" value="Email marketing">
-                            Email marketing
-                        </label>
-                        <label>
-                            <input type="checkbox" name="entry.855004592" value="Other">
-                            Other
-                        </label>
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-gray-200 py-4">
+                    <div class="faq-question flex justify-between items-center cursor-pointer p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition duration-150">
+                        <h3 class="text-lg font-semibold text-gray-800">What are the commission rates?</h3>
+                        <span class="faq-icon text-xl font-bold text-blue-600">+</span>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        <p>Our commission rates are competitive and vary based on the service tier your referral signs up for. You will receive detailed information upon acceptance into the program.</p>
                     </div>
                 </div>
-
-                <!-- Section Header -->
-                <div style="margin: 3rem 0 2rem 0;">
-                    <h3 style="color: #1a4a47; font-size: 1.3rem;">Payment Information</h3>
-                </div>
-
-                <!-- Question 8: Payment preference -->
-                <div class="form-group">
-                    <label>8. How would you prefer to receive your payments? <span class="required">*</span></label>
-                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Mark only one option.</p>
-                    <div class="radio-group">
-                        <label style="display: block; margin-bottom: 0.75rem;">
-                            <input type="radio" name="entry.856948200" value="PayPal" required>
-                            PayPal
-                        </label>
-                        <label style="display: block; margin-bottom: 0.75rem;">
-                            <input type="radio" name="entry.856948200" value="Zelle" required>
-                            Zelle
-                        </label>
-                        <label style="display: block; margin-bottom: 0.75rem;">
-                            <input type="radio" name="entry.856948200" value="Other" required>
-                            Other
-                        </label>
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-gray-200 py-4">
+                    <div class="faq-question flex justify-between items-center cursor-pointer p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition duration-150">
+                        <h3 class="text-lg font-semibold text-gray-800">Is there a cost to join?</h3>
+                        <span class="faq-icon text-xl font-bold text-blue-600">+</span>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        <p>No, there is absolutely no cost to join the CompliTrst™ Partner Program. We provide all necessary training and tools free of charge.</p>
                     </div>
                 </div>
-
-                <!-- Question 9: If other, specify -->
-                <div class="form-group">
-                    <label>9. If you selected other, please specify.</label>
-                    <input type="text" name="entry.1168280669">
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-gray-200 py-4">
+                    <div class="faq-question flex justify-between items-center cursor-pointer p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition duration-150">
+                        <h3 class="text-lg font-semibold text-gray-800">How long does the application process take?</h3>
+                        <span class="faq-icon text-xl font-bold text-blue-600">+</span>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        <p>We typically review and respond to all applications within 3-5 business days. You will be notified via email regarding the status of your submission.</p>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Question 10: Payment information -->
-                <div class="form-group">
-                    <label>10. Please provide the necessary information for your preferred payment method (e.g., PayPal email address or Zelle phone number) <span class="required">*</span></label>
-                    <input type="text" name="entry.1267518593" required>
-                </div>
-
-                <!-- Section Header -->
-                <div style="margin: 3rem 0 2rem 0;">
-                    <h3 style="color: #1a4a47; font-size: 1.3rem;">Terms & Conditions</h3>
-                </div>
-
-                <!-- Terms & Conditions Text -->
-                <div class="terms-section">
-                    <h3>CompliTrst™ Partner Program Terms & Conditions</h3>
-                    <p><strong>Effective Date: September 25, 2025</strong></p>
-                    <p style="margin: 1rem 0;">These Terms and Conditions ("Agreement") govern your participation in the CompliTrst™ Partner Program (the "Program") operated by CompliTrst™, Inc. ("Company," "we," or "us"). By participating in the Program, you ("Partner," "you") agree to be bound by the terms outlined below.</p>
-
-                    <h4 style="margin-top: 1.5rem;">1. Eligibility</h4>
-                    <ul>
-                        <li>You must be 18 years or older and legally allowed to work in the United States.</li>
-                        <li>You may not promote CompliTrst™ services in a deceptive or unethical manner.</li>
-                        <li>Only approved Partners may receive referral payments.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">2. Referral Process</h4>
-                    <ul>
-                        <li>You will receive a unique referral link provided by CompliTrst™.</li>
-                        <li>Referrals must sign up through your unique link to be attributed to you.</li>
-                        <li>Referrals are considered successful when the referred client becomes a paying customer.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">3. Commission & Payouts</h4>
-                    <ul>
-                        <li><strong>One-Time Bonus:</strong> $300 one-time payout for each new client who signs up and pays for the CompliTrst™ monthly subscription.</li>
-                        <li><strong>Recurring Commission:</strong> 20% of the client's monthly fee ($444), equaling $88.80/month for every month the referral remains active.</li>
-                        <li>Payments are processed monthly on or after the 1st of each month.</li>
-                        <li>Payments will be made via PayPal, Zelle, or another agreed-upon method.</li>
-                        <li>You are responsible for any tax obligations associated with your earnings.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">4. Referral Validity</h4>
-                    <ul>
-                        <li>Referrals must sign up within 90 days of clicking your link.</li>
-                        <li>Self-referrals are prohibited and will result in removal from the program.</li>
-                        <li>CompliTrst™ reserves the right to reject any referral at our sole discretion.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">5. Use of Materials</h4>
-                    <ul>
-                        <li>You may use the tools provided by CompliTrst™ (badge, flyer, templates) for promotional purposes only.</li>
-                        <li>You may not misrepresent CompliTrst™ or present yourself as an employee or agent.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">6. Code of Conduct</h4>
-                    <p>Partners are expected to:</p>
-                    <ul>
-                        <li>Represent the brand professionally.</li>
-                        <li>Avoid spam, misrepresentation, or coercive sales tactics.</li>
-                        <li>Respect facility owners' privacy and autonomy.</li>
-                        <li>Refrain from sharing non-public training materials or internal documents.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">7. Portal Access & Certification</h4>
-                    <ul>
-                        <li>All partners must complete the Partner Certification Portal.</li>
-                        <li>Completion is required before referral tracking and payouts are activated.</li>
-                        <li>Portal materials are confidential and intended for partner use only.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">8. Termination</h4>
-                    <ul>
-                        <li>You may leave the program at any time by emailing: <a href="mailto:partners@complitrst.com" style="color: #42968e;">partners@complitrst.com</a>.</li>
-                        <li>CompliTrst™ may suspend or terminate your participation at any time for violation of this agreement or conduct deemed harmful to the brand.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem;">9. Modifications</h4>
-                    <p>We reserve the right to update or change these Terms at any time. Changes will be communicated via email and/or partner portal announcements. Continued participation constitutes acceptance.</p>
-
-                    <h4 style="margin-top: 1.5rem;">10. Limitation of Liability</h4>
-                    <p>CompliTrst™ is not responsible for lost earnings due to platform outages, user error, or technical issues. CompliTrst™ makes no guarantees regarding potential earnings.</p>
-
-                    <h4 style="margin-top: 1.5rem;">11. Governing Law</h4>
-                    <p>This Agreement shall be governed by the laws of the State of Florida.</p>
-
-                    <h4 style="margin-top: 1.5rem;">Questions?</h4>
-                    <p>Please contact us anytime at <a href="mailto:partners@complitrst.com" style="color: #42968e;">partners@complitrst.com</a></p>
-                </div>
-
-                <!-- Question 11: Terms agreement -->
-<div class="field-group mb-6">
-    <div class="flex items-center">
-        <!-- VISIBLE UI ELEMENT: The checkbox the user clicks -->
-        <input type="checkbox" id="user_agreement_check" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 mr-2">
-        <label for="user_agreement_check" class="text-sm font-medium text-gray-700 select-none">
-            I have read and agree to the CompliTrst™ Partner Program Terms & Conditions.
-        </label>
-    </div>
-    
-    <!-- HIDDEN INPUT FIELD: This is what actually sends the data to the Google Form -->
-    <!-- The value is set by the JavaScript below. -->
-    <input type="hidden" name="entry.1003817501" id="hidden_agreement_input" value="" required>
-</div>
-<!-- END OF AGREEMENT FIELD FIX -->
-
-<script>
-   // START OF JAVASCRIPT FIX AND INTEGRATION
-
-// --- 1. AGREEMENT CHECKBOX LOGIC (FIX) ---
-// This ensures the correct value is sent to Google Forms when checked.
-const visibleCheckbox = document.getElementById('user_agreement_check');
-const hiddenInput = document.getElementById('hidden_agreement_input');
-
-if (visibleCheckbox && hiddenInput) {
-    // Listener to update the hidden field when the user clicks the visible checkbox
-    visibleCheckbox.addEventListener('change', function() {
-        if (this.checked) {
-            // Set value to "I agree" for Google Form entry.1003817501
-            hiddenInput.value = "I agree";
-            hiddenInput.removeAttribute('required'); 
-        } else {
-            // Clear value and ensure validation stops submission if unchecked
-            hiddenInput.value = "";
-            hiddenInput.setAttribute('required', 'required');
-        }
-    });
-    
-    // Initial check (ensure the hidden field starts as 'required' if the box is not checked)
-    if (!visibleCheckbox.checked) {
-        hiddenInput.setAttribute('required', 'required');
-    }
-}
+    <!-- Footer -->
+    <footer class="header-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 CompliTrst™. All rights reserved. | <a href="#" class="underline hover:text-gray-300">Privacy Policy</a></p>
+        </div>
+    </footer>
 
 
-// --- 2. SMOOTH SCROLL & APPLY NOW BUTTON FIX (CORRECTED) ---
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        // Prevent default anchor link behavior
-        e.preventDefault();
-        
-        const href = this.getAttribute('href');
-        const target = document.querySelector(href);
+    <script>
+        // --- 1. AGREEMENT CHECKBOX LOGIC ---
+        const visibleCheckbox = document.getElementById('user_agreement_check');
+        const hiddenInput = document.getElementById('hidden_agreement_input');
 
-        if (target) {
-            // STEP 1: If the link is the 'Apply Now' button (#application-form), 
-            // make the form section visible immediately.
-            if (href === '#application-form') {
-                const formSection = document.querySelector('.form-section');
-                if (formSection) {
-                    // Assuming 'show' is the class that makes the form visible
-                    formSection.classList.add('show'); 
+        if (visibleCheckbox && hiddenInput) {
+            visibleCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // Set value to "I agree" for Google Form entry.1003817501
+                    hiddenInput.value = "I agree";
+                    hiddenInput.removeAttribute('required'); 
+                } else {
+                    // Clear value and ensure validation prevents submission if unchecked
+                    hiddenInput.value = "";
+                    hiddenInput.setAttribute('required', 'required');
                 }
-            }
+            });
             
-            // STEP 2: Scroll smoothly to the target element.
-            // Removed the unnecessary setTimeout to ensure immediate action.
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            // Initial check
+            if (!visibleCheckbox.checked) {
+                hiddenInput.setAttribute('required', 'required');
+            }
         }
-    });
-});
-// --- 3. FAQ ACCORDION LOGIC ---
-document.querySelectorAll('.faq-question').forEach(function(question) {
-    question.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const icon = this.querySelector('.faq-icon');
-        const isOpen = answer.classList.contains('show');
-        
-        // Close all FAQs
-        document.querySelectorAll('.faq-answer').forEach(function(a) {
-            a.classList.remove('show');
-        });
-        document.querySelectorAll('.faq-icon').forEach(function(i) {
-            i.textContent = '+';
-        });
-        
-        // Open clicked FAQ if it was closed
-        if (!isOpen) {
-            answer.classList.add('show');
-            icon.textContent = '−';
-        }
-    });
-});
 
+        // --- 2. SMOOTH SCROLL & APPLY NOW BUTTON FIX ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
 
-// --- 4. FORM SUBMISSION WITH AJAX (Your Existing Logic) ---
-const partnerForm = document.getElementById('partnerForm');
-if (partnerForm) {
-    partnerForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        var formData = new FormData(this);
-        
-        // DEBUG: Log what's being captured - Check this in the console!
-        console.log('Form data being sent:');
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-        
-        var submitButton = this.querySelector('button[type="submit"]');
-        
-        // Disable button and show loading state
-        submitButton.disabled = true;
-        submitButton.textContent = 'Submitting...';
-        submitButton.style.opacity = '0.6';
-        
-        // Submit via fetch
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors'
-        }).then(function() {
-            // Show success message
-            document.getElementById('partnerForm').style.display = 'none';
-            document.getElementById('success').style.display = 'block';
-            window.scrollTo({
-                top: document.getElementById('success').offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }).catch(function() {
-            // Even on "error", form likely submitted successfully due to CORS
-            document.getElementById('partnerForm').style.display = 'none';
-            document.getElementById('success').style.display = 'block';
-            window.scrollTo({
-                top: document.getElementById('success').offsetTop - 100,
-                behavior: 'smooth'
+                if (target) {
+                    // [DEBUG] Log click action
+                    console.log('[DEBUG] Anchor link clicked. Scrolling to: ' + href);
+                    
+                    // FIX: If the link is the 'Apply Now' button, make the form section visible immediately.
+                    if (href === '#application-form') {
+                        const formSection = document.querySelector('.form-section');
+                        if (formSection) {
+                            // Guaranteed way to make it visible
+                            formSection.style.display = 'block'; 
+                            formSection.classList.add('show');
+                        }
+                    }
+                    
+                    // Scroll smoothly to the target element.
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-    });
-}
-// END OF JAVASCRIPT FIX AND INTEGRATION
-</script>
+
+        // --- 3. FAQ ACCORDION LOGIC ---
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
+                const isOpen = answer.classList.contains('show');
+                
+                // Close all FAQs
+                document.querySelectorAll('.faq-answer').forEach(function(a) {
+                    a.classList.remove('show');
+                });
+                document.querySelectorAll('.faq-icon').forEach(function(i) {
+                    i.textContent = '+';
+                });
+                
+                // Open clicked FAQ if it was closed
+                if (!isOpen) {
+                    answer.classList.add('show');
+                    icon.textContent = '−';
+                }
+            });
+        });
+
+        // --- 4. FORM SUBMISSION WITH AJAX (Your Existing Logic) ---
+        const partnerForm = document.getElementById('partnerForm');
+        if (partnerForm) {
+            partnerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = new FormData(this);
+                
+                // DEBUG: Log what's being captured - Check this in the console!
+                console.log('Form data being sent:');
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+                
+                var submitButton = this.querySelector('button[type="submit"]');
+                
+                // Disable button and show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                submitButton.style.opacity = '0.6';
+                
+                // Submit via fetch
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                }).then(function() {
+                    // Show success message
+                    document.getElementById('partnerForm').style.display = 'none';
+                    document.getElementById('success').style.display = 'block';
+                    window.scrollTo({
+                        top: document.getElementById('success').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }).catch(function() {
+                    // Handle "error" by showing success (standard practice for Google Forms CORS)
+                    document.getElementById('partnerForm').style.display = 'none';
+                    document.getElementById('success').style.display = 'block';
+                    window.scrollTo({
+                        top: document.getElementById('success').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+    </script>
 
 </body>
 </html>
