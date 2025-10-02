@@ -1059,60 +1059,25 @@ document.querySelectorAll('.faq-question').forEach(function(question) {
     });
 });
 
-// Form submission - URL PARAMETER METHOD
+// Form submission - LET BROWSER HANDLE IT
 var form = document.getElementById('partnerForm');
 if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
+    // Add onsubmit to the form element itself, not addEventListener
+    form.onsubmit = function() {
         var button = this.querySelector('button[type="submit"]');
         button.disabled = true;
         button.textContent = 'Submitting...';
         
-        // Build the URL with all parameters
-        var baseUrl = this.action;
-        var params = [];
-        
-        // Get all form inputs
-        var inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
-        inputs.forEach(function(input) {
-            if (input.value && input.name) {
-                params.push(encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value));
-            }
-        });
-        
-        // Get all checked checkboxes
-        var checkboxes = this.querySelectorAll('input[type="checkbox"]:checked');
-        checkboxes.forEach(function(cb) {
-            if (cb.name && cb.value) {
-                params.push(encodeURIComponent(cb.name) + '=' + encodeURIComponent(cb.value));
-            }
-        });
-        
-        // Get selected radio button
-        var radios = this.querySelectorAll('input[type="radio"]:checked');
-        radios.forEach(function(radio) {
-            if (radio.name && radio.value) {
-                params.push(encodeURIComponent(radio.name) + '=' + encodeURIComponent(radio.value));
-            }
-        });
-        
-        // Create full URL and submit
-        var fullUrl = baseUrl + '?' + params.join('&');
-        
-        // Submit using image trick (silent submission)
-        var img = document.createElement('img');
-        img.src = fullUrl;
-        img.style.display = 'none';
-        document.body.appendChild(img);
-        
-        // Show success message
+        // Let the form submit naturally, then show success
         setTimeout(function() {
-            form.style.display = 'none';
+            document.getElementById('partnerForm').style.display = 'none';
             document.getElementById('success').style.display = 'block';
             window.scrollTo(0, document.getElementById('success').offsetTop - 100);
-        }, 1500);
-    });
+        }, 2000);
+        
+        // Return true to allow normal form submission
+        return true;
+    };
 }
     </script>
 </body>
