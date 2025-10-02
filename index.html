@@ -228,7 +228,31 @@
             color: #1a4a47;
             margin-bottom: 0.5rem;
         }
+       
+  .testimonial-container {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
 
+  .testimonial-container:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .testimonial-container:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .testimonial-container:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeSlideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
         .step-desc {
             color: #666;
             font-size: 0.9rem;
@@ -603,6 +627,48 @@
             </div>
         </div>
     </section>
+    <section style="padding: 4rem 1rem; background: linear-gradient(to right, #e9f3f2, #f9f9f9);">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h2 style="color: #1c3d36; font-size: 2rem; margin-bottom: 0.5rem;">What Our Partners Are Saying</h2>
+    <p style="font-size: 1rem; color: #444;">Real stories from professionals just like you who are helping facilities stay compliant and getting paid to do it.</p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Testimonial 1 -->
+    <div class="testimonial-container" style="max-width: 350px; text-align: center;">
+      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/nurse.png" alt="Kim L." style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <p style="margin-top: 1rem; font-style: italic;">
+        “I have referred at least 4 group homes to CompliTrst in the last 2 weeks. I love being a partner.
+        Thank you, Ms. Tasha, for the opportunity to help facilities be compliant.”
+      </p>
+      <p style="font-weight: bold; color: #1c3d36;">Kim L., LPN</p>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="testimonial-container" style="max-width: 350px; text-align: center;">
+      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/cna.png" alt="Sarah B." style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <p style="margin-top: 1rem; font-style: italic;">
+        “I have a lot of friends in the healthcare field that own residential ALFs and I had no idea
+        that they were drowning in binders and paperwork until I mentioned CompliTrst.
+        This is so easy. I just give them my link and get paid.”
+      </p>
+      <p style="font-weight: bold; color: #1c3d36;">Sarah B., CNA</p>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="testimonial-container" style="max-width: 350px; text-align: center;">
+      <img src="https://raw.githubusercontent.com/tkdbrad03/complitrst-assets/main/consultant.png" alt="David S." style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <p style="margin-top: 1rem; font-style: italic;">
+        “I wished that I had this software when I owned my group homes back in the day.
+        Life sure would have been much easier. But, I am happy to share CompliTrst with my clients.”
+      </p>
+      <p style="font-weight: bold; color: #1c3d36;">David S., Healthcare Consultant</p>
+    </div>
+
+  </div>
+</section>
+
         <div class="container">
             <div class="content-block">
                 <ul>
