@@ -1059,55 +1059,18 @@ document.querySelectorAll('.faq-question').forEach(function(question) {
     });
 });
 
-// Form submission - COMPLETE ALL FIELDS METHOD
+// Form submission - NATIVE SUBMISSION METHOD
 var form = document.getElementById('partnerForm');
 if (form) {
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
         var button = this.querySelector('button[type="submit"]');
         button.disabled = true;
         button.textContent = 'Submitting...';
         
-        // Build complete form data
-        var formData = new FormData(this);
-        var params = [];
+        // Let the form submit naturally to the hidden iframe
+        // Don't prevent default - let it submit normally
         
-        // Collect ALL form data entries
-        for (var pair of formData.entries()) {
-            if (pair[1]) { // Only add if value exists
-                params.push(encodeURIComponent(pair[0]) + '=' + encodeURIComponent(pair[1]));
-            }
-        }
-        
-        // Build complete URL
-        var submitUrl = this.action + '?' + params.join('&');
-        
-        // Use iframe method for submission
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.name = 'submit_frame';
-        document.body.appendChild(iframe);
-        
-        // Create temporary form
-        var tempForm = document.createElement('form');
-        tempForm.target = 'submit_frame';
-        tempForm.method = 'POST';
-        tempForm.action = this.action;
-        
-        // Add all fields to temp form
-        for (var pair of formData.entries()) {
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = pair[0];
-            input.value = pair[1];
-            tempForm.appendChild(input);
-        }
-        
-        document.body.appendChild(tempForm);
-        tempForm.submit();
-        
-        // Show success message after delay
+        // After 2 seconds, show success message
         setTimeout(function() {
             form.style.display = 'none';
             document.getElementById('success').style.display = 'block';
