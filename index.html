@@ -1059,32 +1059,25 @@ document.querySelectorAll('.faq-question').forEach(function(question) {
     });
 });
 
-// Form submission - WITH IFRAME LOAD DETECTION
+// Form submission - LET BROWSER HANDLE IT
 var form = document.getElementById('partnerForm');
-var submitted = false;
-
 if (form) {
-    form.addEventListener('submit', function() {
-        submitted = true;
+    // Add onsubmit to the form element itself, not addEventListener
+    form.onsubmit = function() {
         var button = this.querySelector('button[type="submit"]');
         button.disabled = true;
         button.textContent = 'Submitting...';
         
-        // Don't prevent default - let form submit naturally
+        // Let the form submit naturally, then show success
+        setTimeout(function() {
+            document.getElementById('partnerForm').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            window.scrollTo(0, document.getElementById('success').offsetTop - 100);
+        }, 2000);
+        
+        // Return true to allow normal form submission
         return true;
-    });
-    
-    // Listen for iframe load (means form was submitted)
-    var iframe = document.getElementById('hidden_iframe');
-    if (iframe) {
-        iframe.onload = function() {
-            if (submitted) {
-                document.getElementById('partnerForm').style.display = 'none';
-                document.getElementById('success').style.display = 'block';
-                window.scrollTo(0, document.getElementById('success').offsetTop - 100);
-            }
-        };
-    }
+    };
 }
     </script>
 </body>
