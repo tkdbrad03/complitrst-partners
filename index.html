@@ -1059,7 +1059,7 @@ document.querySelectorAll('.faq-question').forEach(function(question) {
     });
 });
 
-// Form submission - PROPER ENCODING
+// Form submission - URL PARAMETER METHOD
 var form = document.getElementById('partnerForm');
 if (form) {
     form.addEventListener('submit', function(e) {
@@ -1069,25 +1069,44 @@ if (form) {
         button.disabled = true;
         button.textContent = 'Submitting...';
         
-        // Get all form data and encode it properly
-        var formData = new FormData(this);
-        var params = new URLSearchParams();
+        // Build the URL with all parameters
+        var baseUrl = this.action;
+        var params = [];
         
-        // Add all form fields to params
-        for (var pair of formData.entries()) {
-            params.append(pair[0], pair[1]);
-        }
-        
-        // Submit using fetch with proper encoding
-        fetch(this.action + '?' + params.toString(), {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+        // Get all form inputs
+        var inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+        inputs.forEach(function(input) {
+            if (input.value && input.name) {
+                params.push(encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value));
             }
         });
         
-        // Show success message after 1.5 seconds
+        // Get all checked checkboxes
+        var checkboxes = this.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxes.forEach(function(cb) {
+            if (cb.name && cb.value) {
+                params.push(encodeURIComponent(cb.name) + '=' + encodeURIComponent(cb.value));
+            }
+        });
+        
+        // Get selected radio button
+        var radios = this.querySelectorAll('input[type="radio"]:checked');
+        radios.forEach(function(radio) {
+            if (radio.name && radio.value) {
+                params.push(encodeURIComponent(radio.name) + '=' + encodeURIComponent(radio.value));
+            }
+        });
+        
+        // Create full URL and submit
+        var fullUrl = baseUrl + '?' + params.join('&');
+        
+        // Submit using image trick (silent submission)
+        var img = document.createElement('img');
+        img.src = fullUrl;
+        img.style.display = 'none';
+        document.body.appendChild(img);
+        
+        // Show success message
         setTimeout(function() {
             form.style.display = 'none';
             document.getElementById('success').style.display = 'block';
