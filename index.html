@@ -934,32 +934,35 @@ if (visibleCheckbox && hiddenInput) {
 }
 
 
-// --- 2. SMOOTH SCROLL & APPLY NOW BUTTON FIX ---
+// --- 2. SMOOTH SCROLL & APPLY NOW BUTTON FIX (CORRECTED) ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Prevent default anchor link behavior
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
+
         if (target) {
-            // FIX: Ensure the form section is displayed when Apply Now is clicked
-            if (this.getAttribute('href') === '#application-form') {
+            // STEP 1: If the link is the 'Apply Now' button (#application-form), 
+            // make the form section visible immediately.
+            if (href === '#application-form') {
                 const formSection = document.querySelector('.form-section');
                 if (formSection) {
-                    formSection.classList.add('show'); // Assuming 'show' makes it visible
+                    // Assuming 'show' is the class that makes the form visible
+                    formSection.classList.add('show'); 
                 }
             }
-            // Use setTimeout to ensure the browser has time to render the 'show' class 
-            // before calculating the scroll position.
-            setTimeout(function() {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 100);
+            
+            // STEP 2: Scroll smoothly to the target element.
+            // Removed the unnecessary setTimeout to ensure immediate action.
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     });
 });
-
-
 // --- 3. FAQ ACCORDION LOGIC ---
 document.querySelectorAll('.faq-question').forEach(function(question) {
     question.addEventListener('click', function() {
