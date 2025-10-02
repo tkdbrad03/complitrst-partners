@@ -1066,6 +1066,11 @@ document.getElementById('partnerForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     var formData = new FormData(this);
+    // DEBUG: Log what's being captured
+console.log('Form data being sent:');
+for (var pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+}
     var submitButton = this.querySelector('button[type="submit"]');
     
     // Disable button and show loading state
